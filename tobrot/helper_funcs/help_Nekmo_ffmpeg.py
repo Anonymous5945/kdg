@@ -66,10 +66,14 @@ async def mux_video(video_file, sub_file, output_name):
             video_file,
             "-i",
             sub_file,
-            "-c copy",
+            "-c",
+            "copy",
             "-attach",
             "/app/cover.jpg",
-            "-metadata:s:t mimetype=image/jpeg -metadata:s:t filename=cover.jpg",
+            "-metadata:s:t",
+            "mimetype=image/jpeg",
+            "-metadata:s:t",
+            "filename=cover.jpg",
             "-metadata title=",
             domet,
             out_put_file_name
@@ -104,10 +108,14 @@ async def mux_do_video(video_file, sub_file, output_name):
             video_file,
             "-i",
             sub_file,
-            "-c copy",
+            "-c",
+            "copy",
             "-attach",
             "/app/Docover.jpg",
-            "-metadata:s:t mimetype=image/jpeg -metadata:s:t filename=cover.jpg",
+            "-metadata:s:t",
+            "mimetype=image/jpeg" 
+            "-metadata:s:t"
+            "filename=cover.jpg",
             "-metadata title=",
             domet,
             out_put_file_name
