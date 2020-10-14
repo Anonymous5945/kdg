@@ -86,7 +86,6 @@ async def mux_video(video_file, sub_file, output_name):
         e_response = stderr.decode().strip()
         t_response = stdout.decode().strip()
     #
-        LOGGER.info(out_put_file_name)
     if os.path.lexists(out_put_file_name):
         return out_put_file_name
     else:
@@ -125,7 +124,6 @@ async def mux_do_video(video_file, sub_file, output_name):
         e_response = stderr.decode().strip()
         t_response = stdout.decode().strip()
     #
-        LOGGER.info(out_put_file_name)
     if os.path.lexists(out_put_file_name):
         return out_put_file_name
     else:
