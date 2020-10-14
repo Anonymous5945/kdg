@@ -88,12 +88,12 @@ async def mux_video(video_file, sub_file, output_name):
         # Wait for the subprocess to finish
         stdout, stderr = await process.communicate()
         e_response = stderr.decode().strip()
-        t_response = stdout.decode().strip()
-    #
-    if os.path.lexists(out_put_file_name):
+        t_response = stdout.decode().strip
+        
+        LOGGER.info(t_response)
         return out_put_file_name
-    else:
-        return None
+    #
+
         
 async def mux_do_video(video_file, sub_file, output_name):
     # https://stackoverflow.com/a/13891070/4723940
@@ -131,8 +131,8 @@ async def mux_do_video(video_file, sub_file, output_name):
         stdout, stderr = await process.communicate()
         e_response = stderr.decode().strip()
         t_response = stdout.decode().strip()
-    #
-    if os.path.lexists(out_put_file_name):
+        
+        LOGGER.info(t_response)
         return out_put_file_name
-    else:
-        return None
+    #
+    
