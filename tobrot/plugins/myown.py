@@ -25,13 +25,13 @@ from tobrot.helper_funcs.help_Nekmo_ffmpeg import mux_video , mux_do_video
 async def mux_f(client, message):
     status_message = await message.reply_text("Processing ...")
     a , b , c= message.text.split("|")
-    await status_message.edit(a b c)
+    await status_message.edit(c)
     location = await mux_video(a,b,c)
     await status_message.edit(location)
     
 async def mux_do_f(client, message):
     status_message = await message.reply_text("Processing ...")
     a , b, c= message.text.split("|")
-    await status_message.edit(a b c)
+    await status_message.edit(a)
     location = await mux_do_video(a,b,c)
     await status_message.edit(location)
