@@ -31,5 +31,5 @@ async def mux_f(client, message):
 async def mux_do_f(client, message):
     status_message = await message.reply_text("Processing ...")
     a , b, c= message.text.split("|")
-    location = await mux_do_video(a,b)
+    location = await mux_do_video(a,b,c)
     await status_message.edit(location)
