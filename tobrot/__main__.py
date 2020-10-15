@@ -113,7 +113,7 @@ if __name__ == "__main__" :
         remux_f,
         filters=filters.command([Remux_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
     )
-    app.add_handler(incoming_mux_handler)
+    app.add_handler(incoming_remux_handler)
     #
     exec_message_handler = MessageHandler(
         exec_message_f,
