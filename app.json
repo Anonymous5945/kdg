@@ -66,6 +66,11 @@
       "value": "domux",
       "required": false
     },
+    "Remux_CMD_TRIGGER": {
+      "description": "remux command trigger",
+      "value": "remux",
+      "required": false
+    },
     "Mass_CMD_TRIGGER": {
       "description": "Mass Download command trigger",
       "value": "mass",
