@@ -146,6 +146,6 @@ async def gdfile_f(client, message):
        u_output = message.text.split(" ")[1]
        await run_command(["chmod", "a+x", "./gdown.pl"])
        await run_command(["./gdown.pl", link_text, u_output])
-       
+       await status_message.edit(u_output)
     #
     
