@@ -36,7 +36,7 @@ async def mux_f(client, message):
     await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", output])
     await status_message.edit(output)
     
-async def remux_f(client, message):
+async def domux_f(client, message):
     status_message = await message.reply_text("Processing ...")
     a , b, c= message.text.split("|")
     file = a.split(" ")[1]
@@ -47,16 +47,16 @@ async def remux_f(client, message):
     await status_message.edit(output)
     
  
-async def automux_f(client, message):
+async def remux_f(client, message):
     status_message = await message.reply_text("Processing ...")
     a , c= message.text.split("|")
     file = a.split(" ")[1]
     output = c.split(" ")[1]
-    mcover="/app/Docover.jpg"
-    await run_command(["ffmpeg", "-i", file, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd & Enc'd By Team-D&O @dramaost TG Group", output])
+    mcover="/app/cover.jpg"
+    await run_command(["ffmpeg", "-i", file, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", output])
     await status_message.edit(output)
     
-async def remux_f(client, message):
+async def automux_f(client, message):
     status_message = await message.reply_text("Processing ...")
     n=message.message_id
     w=message.reply_to_message.message_id
@@ -74,7 +74,7 @@ async def remux_f(client, message):
     await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd & Enc'd By Team-D&O @dramaost TG Group", output])
     await status_message.edit(output)
     
-async def mux_do_f(client, message):
+async def autosubmux_f(client, message):
     status_message = await message.reply_text("Processing ...")
     w=message.reply_to_message.message_id
     user_id = message.chat.id
@@ -108,8 +108,8 @@ async def muxget_f(client, message):
           sub = await m.download("/app/")
     #
     final_output = message.text.split(" ")[1]
-    mcover="/app/Docover.jpg"
-    await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd & Enc'd By Team-D&O @dramaost TG Group", final_output])
+    mcover="/app/cover.jpg"
+    await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", final_output])
     await status_message.edit(final_output)
     
 async def muxyou_f(client, message):
@@ -130,6 +130,6 @@ async def muxyou_f(client, message):
           sub = await m.download("/app/")
     #
     final_output = message.text.split(" ")[1]
-    mcover="/app/Docover.jpg"
-    await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd & Enc'd By Team-D&O @dramaost TG Group", final_output])
+    mcover="/app/cover.jpg"
+    await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", final_output])
     await status_message.edit(final_output)
