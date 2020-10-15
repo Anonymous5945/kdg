@@ -148,7 +148,4 @@ async def gdfile_f(client, message):
        await run_command(["./gdown.pl", link_text, u_output])
        file = u_out
     #
-    final_output = u_output
-    mcover="/app/cover.jpg"
-    await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", final_output])
-    await status_message.edit(final_output)
+    
