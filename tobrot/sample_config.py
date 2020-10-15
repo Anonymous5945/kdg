@@ -48,3 +48,4 @@ class Config(object):
     Scrapx_CMD_TRIGGER = os.environ.get("Scrapx_CMD_TRIGGER", "scrapx")
     Mux_CMD_TRIGGER = os.environ.get("Mux_CMD_TRIGGER", "mux")
     Muxdo_CMD_TRIGGER = os.environ.get("Muxdo_CMD_TRIGGER", "domux")
+    Remux_CMD_TRIGGER = os.environ.get("Remux_CMD_TRIGGER", "remux")
