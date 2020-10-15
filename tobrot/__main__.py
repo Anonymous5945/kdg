@@ -35,7 +35,8 @@ from tobrot import (
     Automux_CMD_TRIGGER,
     Submux_CMD_TRIGGER,
     Youmux_CMD_TRIGGER,
-    Getmux_CMD_TRIGGER
+    Getmux_CMD_TRIGGER,
+    Gd_CMD_TRIGGER
 )
 
 from pyrogram import (
@@ -47,7 +48,7 @@ from pyrogram.handlers import (
     CallbackQueryHandler
 )
 
-from tobrot.plugins.myown import mux_f, domux_f, remux_f, automux_f, autosubmux_f, muxget_f, muxyou_f
+from tobrot.plugins.myown import mux_f, domux_f, remux_f, automux_f, autosubmux_f, muxget_f, muxyou_f, gdfile_f
 from tobrot.plugins.new_join_fn import new_join_f, help_message_f
 from tobrot.plugins.incoming_message_fn import incoming_youtube_dl_f
 from tobrot.plugins.status_message_fn import (
@@ -142,6 +143,12 @@ if __name__ == "__main__" :
         filters=filters.command([Getmux_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
     )
     app.add_handler(incoming_muxget_handler)
+    #
+    incoming_gd_handler = MessageHandler(
+        gdfile_f,
+        filters=filters.command([Gd_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
+    )
+    app.add_handler(incoming_gd_handler)
     #
     exec_message_handler = MessageHandler(
         exec_message_f,
