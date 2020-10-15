@@ -89,3 +89,47 @@ async def mux_do_f(client, message):
     mcover="/app/Docover.jpg"
     await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd & Enc'd By Team-D&O @dramaost TG Group", output])
     await status_message.edit(output)
+    
+async def muxget_f(client, message):
+    status_message = await message.reply_text("Processing ...")
+    n=message.message_id
+    w=message.reply_to_message.message_id
+    user_id = message.chat.id
+    for i in range(w, n):
+       u_id = int(i)
+       m = await client.get_messages(user_id, u_id)
+       if m and m.text and m.text.lower().startswith("https:"):
+          link_text = m.text
+          head, tail = os.path.split(link_text)
+          output= tail
+          await run_command(["wget", "-c", link_text, "-O", output])
+          file = output
+       if m and m.document and m.document.file_name.lower().endswith(".srt"):
+          sub = await m.download("/app/")
+    #
+    final_output = message.text.split(" ")[1]
+    mcover="/app/Docover.jpg"
+    await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd & Enc'd By Team-D&O @dramaost TG Group", final_output])
+    await status_message.edit(final_output)
+    
+async def muxyou_f(client, message):
+    status_message = await message.reply_text("Processing ...")
+    n=message.message_id
+    w=message.reply_to_message.message_id
+    user_id = message.chat.id
+    for i in range(w, n):
+       u_id = int(i)
+       m = await client.get_messages(user_id, u_id)
+       if m and m.text and m.text.lower().startswith("https:"):
+          link_text = m.text
+          output = message.text.split(" ")[1]
+          u_out = output + ".mp4"
+          await run_command(["youtube-dl", "-o", u_out, link_text])
+          file = u_out
+       if m and m.document and m.document.file_name.lower().endswith(".srt"):
+          sub = await m.download("/app/")
+    #
+    final_output = message.text.split(" ")[1]
+    mcover="/app/Docover.jpg"
+    await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd & Enc'd By Team-D&O @dramaost TG Group", final_output])
+    await status_message.edit(final_output)
