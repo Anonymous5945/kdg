@@ -21,23 +21,35 @@ from tobrot import (
 import asyncio
 import time
 from tobrot.helper_funcs.help_Nekmo_ffmpeg import mux_video , mux_do_video
+from tobrot.helper_funcs.run_shell_command import run_command
 
 async def mux_f(client, message):
     status_message = await message.reply_text("Processing ...")
     a , b , c= message.text.split("|")
-    rea = a.split(" ")[1]
-    reb = b.split(" ")[1]
-    rec = c.split(" ")[1]
-    await status_message.edit(c)
-    location = await mux_video(rea,reb,rec)
-    await status_message.edit(location)
+    file = a.split(" ")[1]
+    sub = b.split(" ")[1]
+    output = c.split(" ")[1]
+    mcover="/app/cover.jpg"
+    await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", output])
+    await status_message.edit(output)
     
 async def mux_do_f(client, message):
     status_message = await message.reply_text("Processing ...")
     a , b , c= message.text.split("|")
-    rea = a.split(" ")[1]
-    reb = b.split(" ")[1]
-    rec = c.split(" ")[1]
-    await status_message.edit(a)
-    location = await mux_do_video(rea,reb,rec)
-    await status_message.edit(location)
+    file = a.split(" ")[1]
+    sub = b.split(" ")[1]
+    out = c.split(" ")[1]
+    mcover="/app/Docover.jpg"
+    await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", output])
+    await status_message.edit(output)
+    
+ 
+async def remux_f(client, message):
+    status_message = await message.reply_text("Processing ...")
+    a , b ,c= message.text.split("|")
+    file = a.split(" ")[1]
+    mcover = b.split(" ")[1]
+    out = c.split(" ")[1]
+    await run_command(["ffmpeg", "-i", file, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", output])
+    await status_message.edit(output)
+   
