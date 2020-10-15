@@ -133,3 +133,22 @@ async def muxyou_f(client, message):
     mcover="/app/cover.jpg"
     await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", final_output])
     await status_message.edit(final_output)
+
+
+async def gdfile_f(client, message):
+    status_message = await message.reply_text("Processing ...")
+    w=message.reply_to_message.message_id
+    user_id = message.chat.id
+    u_id = int(w)
+    m = await client.get_messages(user_id, u_id)
+    if m and m.text and m.text.lower().startswith("https:"):
+       link_text = m.text
+       u_output = message.text.split(" ")[1]
+       await run_command(["chmod", "a+x", "./gdown.pl"])
+       await run_command(["./gdown.pl", link_text, u_output])
+       file = u_out
+    #
+    final_output = u_output
+    mcover="/app/cover.jpg"
+    await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", final_output])
+    await status_message.edit(final_output)
