@@ -44,3 +44,4 @@ Mass_CMD_TRIGGER = Config.Mass_CMD_TRIGGER
 Scrapx_CMD_TRIGGER = Config.Scrapx_CMD_TRIGGER
 Mux_CMD_TRIGGER = Config.Mux_CMD_TRIGGER
 Muxdo_CMD_TRIGGER = Config.Muxdo_CMD_TRIGGER
+Remux_CMD_TRIGGER = Config.Remux_CMD_TRIGGER
