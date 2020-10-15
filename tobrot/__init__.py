@@ -49,3 +49,4 @@ Automux_CMD_TRIGGER = Config.Automux_CMD_TRIGGER
 Submux_CMD_TRIGGER = Config.Submux_CMD_TRIGGER
 Youmux_CMD_TRIGGER = Config.Youmux_CMD_TRIGGER
 Getmux_CMD_TRIGGER = Config.Getmux_CMD_TRIGGER
+Gd_CMD_TRIGGER = Config.Gd_CMD_TRIGGER
