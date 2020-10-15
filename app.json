@@ -91,6 +91,11 @@
       "value": "getmux",
       "required": false
     },
+    "Gd_CMD_TRIGGER": {
+      "description": "gd command trigger",
+      "value": "gd",
+      "required": false
+    },
     "Mass_CMD_TRIGGER": {
       "description": "Mass Download command trigger",
       "value": "mass",
