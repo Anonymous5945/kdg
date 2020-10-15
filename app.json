@@ -61,14 +61,34 @@
       "value": "mux",
       "required": false
     },
-    "Muxdo_CMD_TRIGGER": {
-      "description": "Mass mux command trigger",
+    "Domux_CMD_TRIGGER": {
+      "description": "Do mux command trigger",
       "value": "domux",
       "required": false
     },
     "Remux_CMD_TRIGGER": {
       "description": "remux command trigger",
       "value": "remux",
+      "required": false
+    },
+    "Automux_CMD_TRIGGER": {
+      "description": "auto Mux command trigger",
+      "value": "automux",
+      "required": false
+    },
+    "Submux_CMD_TRIGGER": {
+      "description": "sub Mux command trigger",
+      "value": "submux",
+      "required": false
+    },
+    "Youmux_CMD_TRIGGER": {
+      "description": "you Mux command trigger",
+      "value": "youmux",
+      "required": false
+    },
+    "Getmux_CMD_TRIGGER": {
+      "description": "get Mux command trigger",
+      "value": "getmux",
       "required": false
     },
     "Mass_CMD_TRIGGER": {
