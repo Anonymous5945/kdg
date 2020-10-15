@@ -20,6 +20,9 @@ from tobrot import (
 
 import asyncio
 import time
+from PIL import Image
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
 from tobrot.helper_funcs.help_Nekmo_ffmpeg import mux_video , mux_do_video
 from tobrot.helper_funcs.run_shell_command import run_command
 
