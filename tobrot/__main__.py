@@ -31,6 +31,7 @@ from tobrot import (
     Scrapx_CMD_TRIGGER,
     Mux_CMD_TRIGGER,
     Muxdo_CMD_TRIGGER
+    Remux_CMD_TRIGGER
 )
 
 from pyrogram import (
@@ -42,7 +43,7 @@ from pyrogram.handlers import (
     CallbackQueryHandler
 )
 
-from tobrot.plugins.myown import mux_f, mux_do_f
+from tobrot.plugins.myown import mux_f, mux_do_f, remux_f
 from tobrot.plugins.new_join_fn import new_join_f, help_message_f
 from tobrot.plugins.incoming_message_fn import incoming_youtube_dl_f
 from tobrot.plugins.status_message_fn import (
@@ -107,6 +108,12 @@ if __name__ == "__main__" :
         filters=filters.command([Muxdo_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
     )
     app.add_handler(incoming_mux_do_handler)
+    #
+    incoming_remux_handler = MessageHandler(
+        remux_f,
+        filters=filters.command([Remux_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
+    )
+    app.add_handler(incoming_mux_handler)
     #
     exec_message_handler = MessageHandler(
         exec_message_f,
