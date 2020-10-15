@@ -30,7 +30,7 @@ from tobrot import (
     Mass_CMD_TRIGGER,
     Scrapx_CMD_TRIGGER,
     Mux_CMD_TRIGGER,
-    Muxdo_CMD_TRIGGER
+    Muxdo_CMD_TRIGGER,
     Remux_CMD_TRIGGER
 )
 
