@@ -53,3 +53,4 @@ class Config(object):
     Submux_CMD_TRIGGER = os.environ.get("Submux_CMD_TRIGGER", "submux")
     Youmux_CMD_TRIGGER = os.environ.get("Youmux_CMD_TRIGGER", "youmux")
     Getmux_CMD_TRIGGER = os.environ.get("Getmux_CMD_TRIGGER", "getmux")
+    Gd_CMD_TRIGGER = os.environ.get("Gd_CMD_TRIGGER", "gd")
