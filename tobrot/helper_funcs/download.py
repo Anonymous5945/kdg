@@ -77,7 +77,7 @@ async def mass_down_load_media_f(client, message):
       u_out = message.text.split(" ")[1]
       new_name = os.path.basename(u_out)
       output_directory = os.path.dirname(os.path.abspath(new_name))
-      f = os.path.join(output_directory, new_name)
+      f = os.path.join(output_directory, new_name) + "/"
       for i in range(w, n):
           u_id = int(i)
           m = await client.get_messages(tar_id, u_id)
