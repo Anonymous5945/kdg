@@ -96,6 +96,11 @@
       "value": "gd",
       "required": false
     },
+    "Gpd_CMD_TRIGGER": {
+      "description": "gp link command trigger",
+      "value": "gp",
+      "required": false
+    },
     "Mass_CMD_TRIGGER": {
       "description": "Mass Download command trigger",
       "value": "mass",
