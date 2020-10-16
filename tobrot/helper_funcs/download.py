@@ -18,6 +18,7 @@ import os
 import time
 import sys
 import traceback
+import aiohttp
 
 from datetime import datetime
 from pyrogram import Client, filters
@@ -92,6 +93,22 @@ async def mass_down_load_media_f(client, message):
         await mess_age.edit_text("Reply to a Telegram Media, to save to the server.")
 
 
+async def gp_f(client, message):
+    status_message = await message.reply_text("Processing ...")
+    async with aiohttp.ClientSession() as session:
+      w=message.reply_to_message.message_id
+      u_id = int(w)
+      m = await client.get_messages(user_id, u_id)
+      if m and m.text and m.text.lower().startswith("https:"):
+         link_text = m.text
+         SHORTEN_LINK_API_KEY="04ff157ce8cb9727afca4641be87af6b5aa27a5d"
+         SHORTEN_LINK_API_URL="https://gplinks.in/api?api={api_token}&url={long_url}&format=text"
+         long_url="https://t.me/c/1428281865/11996"
+         request_url = SHORTEN_LINK_API_URL.format(
+         api_token=SHORTEN_LINK_API_KEY, long_url=long_url)
+         response_text = await (await session.get(request_url)).text()
+      await status_message.edit(response_text)
+        
 async def scrap_seg_media_f(client, message):
     
     http = urllib3.PoolManager()
