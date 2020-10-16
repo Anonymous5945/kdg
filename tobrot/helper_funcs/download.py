@@ -74,18 +74,19 @@ async def mass_down_load_media_f(client, message):
     tar_id = message.chat.id
     start_t = datetime.now()
     if message.reply_to_message is not None:
+      u_out = message.text.split(" ")[1]
+      new_name = os.path.basename(u_out)
+      output_directory = os.path.dirname(os.path.abspath(output_name))
+      f = os.path.join(output_directory, new_name)
       for i in range(w, n):
           u_id = int(i)
           m = await client.get_messages(tar_id, u_id)
           if m.media:
-              f = await m.download("/app/")
-          end_t = datetime.now()
-          ms = (end_t - start_t).seconds
-          LOGGER.info(f)
-          await asyncio.sleep(6)
-          await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n <code>{f}</code> \n\n in <u>{ms}</u> seconds")
-          the_real_download_location_g = os.path.basename(f)
-          LOGGER.info(the_real_download_location_g)
+             await m.download(f)  
+      end_t = datetime.now()
+      ms = (end_t - start_t).seconds
+      await asyncio.sleep(6)
+      await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n <code>{f}</code> \n\n in <u>{ms}</u> seconds")
     else:
         #await asyncio.sleep(4)
         await mess_age.edit_text("Reply to a Telegram Media, to save to the server.")
