@@ -104,8 +104,7 @@ async def gp_f(client, message):
          SHORTEN_LINK_API_KEY="04ff157ce8cb9727afca4641be87af6b5aa27a5d"
          SHORTEN_LINK_API_URL="https://gplinks.in/api?api={api_token}&url={long_url}&format=text"
          long_url = link_text
-         request_url = SHORTEN_LINK_API_URL.format(
-         api_token=SHORTEN_LINK_API_KEY, long_url=long_url)
+         request_url = SHORTEN_LINK_API_URL.format(api_token=SHORTEN_LINK_API_KEY, long_url=long_url)
          response_text = await (await session.get(request_url)).text()
       await status_message.edit(response_text)
         
