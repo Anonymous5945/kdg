@@ -98,6 +98,7 @@ async def gp_f(client, message):
     async with aiohttp.ClientSession() as session:
       w=message.reply_to_message.message_id
       u_id = int(w)
+      user_id = message.chat.id
       m = await client.get_messages(user_id, u_id)
       if m and m.text and m.text.lower().startswith("https:"):
          link_text = m.text
