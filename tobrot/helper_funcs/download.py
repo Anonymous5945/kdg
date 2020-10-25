@@ -109,16 +109,14 @@ async def gp_f(client, message):
          response_text = await (await session.get(request_url)).text()
       await status_message.edit(response_text)
         
-async def scrap_seg_media_f(client, message):
-    
+async def scrap_seg_media_f(client, message): 
     http = urllib3.PoolManager()
-
     url = message.reply_to_message.text
-    n = message.text.split()
+    n = message.text.split(" ")[1]
     response = http.request('GET', url)
     soup = BeautifulSoup(response.data, "html.parser")
     links = soup.find_all('a')
-
+    i=1
     for tag in links:
         link = tag.get('href',None)
         tght = tag.text.strip()
