@@ -19,6 +19,8 @@ import time
 import sys
 import traceback
 import aiohttp
+import json
+import urllib.parse
 
 from datetime import datetime
 from pyrogram import Client, filters
@@ -126,3 +128,14 @@ async def scrap_seg_media_f(client, message):
               i = i+1
            else:
               await message.reply_text(f"<a href='{link}'>{tght}</a>")
+async def wetv_f(client, message):
+    status_message = await message.reply_text("Processing ...")
+    with open("test.json", "w+") as fd:
+    fd.write(message.reply_to_message.text)
+    with open('test.json') as json_file:
+       data = json.load(json_file)
+    link = data['vurl']
+    encodedStr = link
+    tv = urllib.parse.unquote(encodedStr)
+    await status_message.edit(tv)
+    os.remove("test.json")
