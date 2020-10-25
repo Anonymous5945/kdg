@@ -104,13 +104,13 @@ async def muxget_f(client, message):
           u_output= tail
           await run_command(["wget", "-c", link_text, "-O", u_output])
           file = u_output
-          if(i=(n-1)):
+          if(i==(n-1)):
             final_output = message.text.split(" ")[1]
             mcover="/app/cover.jpg"
             await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-c:s", "srt", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", final_output])
        if m and m.document and m.document.file_name.lower().endswith(".srt"):
           sub = await m.download("/app/")
-          if(i=(n-1)):
+          if(i==(n-1)):
             final_output = message.text.split(" ")[1]
             mcover="/app/cover.jpg"
             await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-c:s", "srt", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", final_output])
