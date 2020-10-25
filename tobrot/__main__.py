@@ -37,7 +37,8 @@ from tobrot import (
     Youmux_CMD_TRIGGER,
     Getmux_CMD_TRIGGER,
     Gd_CMD_TRIGGER,
-    Gpd_CMD_TRIGGER
+    Gpd_CMD_TRIGGER,
+    Wetv_CMD_TRIGGER
 )
 
 from pyrogram import (
@@ -63,7 +64,7 @@ from tobrot.plugins.custom_thumbnail import (
     clear_thumb_nail
 )
 
-from tobrot.helper_funcs.download import down_load_media_f, mass_down_load_media_f , scrap_seg_media_f, gp_f
+from tobrot.helper_funcs.download import down_load_media_f, mass_down_load_media_f , scrap_seg_media_f, gp_f , wetv_f
 
 if __name__ == "__main__" :
     # create download directory, if not exist
@@ -85,6 +86,11 @@ if __name__ == "__main__" :
     )
     app.add_handler(incoming_gpd_handler)
     #
+    incoming_wetv_handler = MessageHandler(
+        wetv_f,
+        filters=filters.command([Wetv_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
+    )
+    app.add_handler(incoming_wetv_handler)
     #
     incoming_youtube_dl_handler = MessageHandler(
         incoming_youtube_dl_f,
