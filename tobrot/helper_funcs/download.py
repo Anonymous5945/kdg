@@ -62,6 +62,8 @@ async def down_load_media_f(client, message):
         if (extension == ".srt")
            with open(the_real_download_location) as myfile:
              head = [next(myfile) for x in range(5)]
+        else:
+           head="not a srt file"
         await asyncio.sleep(6)
         await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n<code>{the_real_download_location}</code>\n\n<b>First 5 lines of srt:</b>\n\n<code>{head}</code>\n\nFinished in <u>{ms}</u> seconds")
         the_real_download_location_g = os.path.basename(the_real_download_location)
