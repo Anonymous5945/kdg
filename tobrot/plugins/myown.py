@@ -92,35 +92,37 @@ async def autosubmux_f(client, message):
     
 async def muxget_f(client, message):
     status_message = await message.reply_text("Processing ...")
-    n=message.message_id
     w=message.reply_to_message.message_id
     user_id = message.chat.id
-    for i in range(w, n):
-       u_id = int(i)
-       m = await client.get_messages(user_id, u_id)
-       if m and m.text and m.text.lower().startswith("https:"):
-          link_text = m.text
-          head, tail = os.path.split(link_text)
-          u_output= tail
-          await run_command(["wget", "-c", link_text, "-O", u_output])
+    u_id = int(w)
+    m = await client.get_messages(user_id, u_id)
+    if m and m.text and m.text.lower().startswith("https:"):
+       link_text = m.text
+       u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
+       if u_output != "":
+         await run_command(["wget", "-c", link_text, "-O", u_output])
+         await status_message.edit(f"<code>{u_output}</code>")
+       else:
+         await status_message.edit("please type output name with run command") 
     #
-    await status_message.edit(f"<code>{u_output}</code>")
+    
     
 async def muxyou_f(client, message):
     status_message = await message.reply_text("Processing ...")
-    n=message.message_id
     w=message.reply_to_message.message_id
     user_id = message.chat.id
-    for i in range(w, n):
-       u_id = int(i)
-       m = await client.get_messages(user_id, u_id)
-       if m and m.text and m.text.lower().startswith("https:"):
-          link_text = m.text
-          head, tail = os.path.split(link_text)
-          u_output= tail + ".mp4"
+    u_id = int(w)
+    m = await client.get_messages(user_id, u_id)
+    if m and m.text and m.text.lower().startswith("https:"):
+       link_text = m.text
+       u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
+       if u_output != "":
           await run_command(["youtube-dl", "-o", u_output, link_text])
+          await status_message.edit(f"<code>{u_output}</code>")
+       else:
+          await status_message.edit("please type output name with run command")
     #
-    await status_message.edit(f"<code>{u_output}</code>")
+    
 
 
 async def gdfile_f(client, message):
@@ -131,9 +133,12 @@ async def gdfile_f(client, message):
     m = await client.get_messages(user_id, u_id)
     if m and m.text and m.text.lower().startswith("https:"):
        link_text = m.text
-       u_output = message.text.split(" ")[1]
-       await run_command(["chmod", "a+x", "./gdown.pl"])
-       await run_command(["./gdown.pl", link_text, u_output])
-       await status_message.edit(f"<code>{u_output}</code>")
+       u_output = message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
+       if u_output != "":
+          await run_command(["chmod", "a+x", "./gdown.pl"])
+          await run_command(["./gdown.pl", link_text, u_output])
+          await status_message.edit(f"<code>{u_output}</code>")
+       else:
+          await status_message.edit("please type output name with run command")
     #
     
