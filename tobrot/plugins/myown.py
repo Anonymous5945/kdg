@@ -104,7 +104,7 @@ async def muxget_f(client, message):
           u_output= tail
           await run_command(["wget", "-c", link_text, "-O", u_output])
     #
-    await status_message.edit(u_output)
+    await status_message.edit(f"<code>{u_output}</code>")
     
 async def muxyou_f(client, message):
     status_message = await message.reply_text("Processing ...")
@@ -120,7 +120,7 @@ async def muxyou_f(client, message):
           u_output= tail + ".mp4"
           await run_command(["youtube-dl", "-o", u_output, link_text])
     #
-    await status_message.edit(u_output)
+    await status_message.edit(f"<code>{u_output}</code>")
 
 
 async def gdfile_f(client, message):
@@ -134,6 +134,6 @@ async def gdfile_f(client, message):
        u_output = message.text.split(" ")[1]
        await run_command(["chmod", "a+x", "./gdown.pl"])
        await run_command(["./gdown.pl", link_text, u_output])
-       await status_message.edit(u_output)
+       await status_message.edit(f"<code>{u_output}</code>")
     #
     
