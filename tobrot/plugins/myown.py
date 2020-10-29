@@ -98,11 +98,12 @@ async def muxget_f(client, message):
     m = await client.get_messages(user_id, u_id)
     if m and m.text and m.text.lower().startswith("https:"):
        link_text = m.text
-       u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
-       if u_output != "":
+       try:
+         u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
          await run_command(["wget", "-c", link_text, "-O", u_output])
          await status_message.edit(f"<code>{u_output}</code>")
-       else:
+       except IndexError:
+         pass
          await status_message.edit("please type output name with run command") 
     #
     
@@ -115,11 +116,12 @@ async def muxyou_f(client, message):
     m = await client.get_messages(user_id, u_id)
     if m and m.text and m.text.lower().startswith("https:"):
        link_text = m.text
-       u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
-       if u_output != "":
+       try:
+          u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
           await run_command(["youtube-dl", "-o", u_output, link_text])
           await status_message.edit(f"<code>{u_output}</code>")
-       else:
+       except IndexError:
+          pass
           await status_message.edit("please type output name with run command")
     #
     
@@ -133,12 +135,13 @@ async def gdfile_f(client, message):
     m = await client.get_messages(user_id, u_id)
     if m and m.text and m.text.lower().startswith("https:"):
        link_text = m.text
-       u_output = message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
-       if u_output != "":
+       try:
+          u_output = message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
           await run_command(["chmod", "a+x", "./gdown.pl"])
           await run_command(["./gdown.pl", link_text, u_output])
           await status_message.edit(f"<code>{u_output}</code>")
-       else:
+       except IndexError:
+          pass
           await status_message.edit("please type output name with run command")
     #
     
