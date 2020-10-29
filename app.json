@@ -88,12 +88,12 @@
     },
     "Youmux_CMD_TRIGGER": {
       "description": "you Mux command trigger",
-      "value": "youmux",
+      "value": "you",
       "required": false
     },
     "Getmux_CMD_TRIGGER": {
       "description": "get Mux command trigger",
-      "value": "getmux",
+      "value": "get",
       "required": false
     },
     "Gd_CMD_TRIGGER": {
@@ -113,7 +113,7 @@
     },
     "Scrapx_CMD_TRIGGER": {
       "description": "scrap one by one command trigger",
-      "value": "scrapx",
+      "value": "scrap",
       "required": false
     },
     "Upload_CMD_TRIGGER": {
