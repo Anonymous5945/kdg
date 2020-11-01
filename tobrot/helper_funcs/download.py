@@ -38,7 +38,7 @@ from tobrot.helper_funcs.display_progress import progress_for_pyrogram
 async def down_load_media_f(client, message):
     user_id = message.from_user.id
     print(user_id)
-    mess_age = await message.reply_text("...", quote=True)
+    mess_age = await message.reply_text("processing...", quote=True)
     if not os.path.isdir(DOWNLOAD_LOCATION):
         os.makedirs(DOWNLOAD_LOCATION)
     if message.reply_to_message is not None:
@@ -62,12 +62,10 @@ async def down_load_media_f(client, message):
         if extension == ".srt" or extension == ".vtt":
            with open(the_real_download_location) as myfile:
              head = [next(myfile) for x in range(7)]
-             await asyncio.sleep(6)
              await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n<code>{the_real_download_location}</code>\n\n<b>First 7 lines of Sub:</b>\n\n<code>{head}</code>\n\nFinished in <u>{ms}</u> seconds")
              the_real_download_location_g = os.path.basename(the_real_download_location)
              LOGGER.info(the_real_download_location_g)
         else:
-           await asyncio.sleep(6)
            await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n<code>{the_real_download_location}</code>\n\nFinished in <u>{ms}</u> seconds")
            the_real_download_location_g = os.path.basename(the_real_download_location)
            LOGGER.info(the_real_download_location_g)
@@ -80,7 +78,7 @@ async def down_load_media_f(client, message):
 async def mass_down_load_media_f(client, message):
     user_id = message.from_user.id
     print(user_id)
-    mess_age = await message.reply_text("...", quote=True)
+    mess_age = await message.reply_text("processing...", quote=True)
     if not os.path.isdir(DOWNLOAD_LOCATION):
         os.makedirs(DOWNLOAD_LOCATION)    
     n=message.message_id
@@ -104,7 +102,7 @@ async def mass_down_load_media_f(client, message):
         await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n <code>{f}</code> \n\ncompleted in <u>{ms}</u> seconds")
       except IndexError:
         pass
-        await status_message.edit("please type output folder name with run command")
+        await mess_age.edit("please type output folder name with run command")
     else:
         #await asyncio.sleep(4)
         await mess_age.edit_text("Reply to a Telegram Media, to save to the server.")
