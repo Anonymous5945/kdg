@@ -62,12 +62,15 @@ async def down_load_media_f(client, message):
         if extension == ".srt" or extension == ".vtt":
            with open(the_real_download_location) as myfile:
              head = [next(myfile) for x in range(7)]
+             await asyncio.sleep(6)
+             await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n<code>{the_real_download_location}</code>\n\n<b>First 7 lines of Sub:</b>\n\n<code>{head}</code>\n\nFinished in <u>{ms}</u> seconds")
+             the_real_download_location_g = os.path.basename(the_real_download_location)
+             LOGGER.info(the_real_download_location_g)
         else:
-           head="not a Sub file"
-        await asyncio.sleep(6)
-        await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n<code>{the_real_download_location}</code>\n\n<b>First 7 lines of Sub:</b>\n\n<code>{head}</code>\n\nFinished in <u>{ms}</u> seconds")
-        the_real_download_location_g = os.path.basename(the_real_download_location)
-        LOGGER.info(the_real_download_location_g)
+           await asyncio.sleep(6)
+           await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n<code>{the_real_download_location}</code>\n\nFinished in <u>{ms}</u> seconds")
+           the_real_download_location_g = os.path.basename(the_real_download_location)
+           LOGGER.info(the_real_download_location_g)
 
     else:
         #await asyncio.sleep(4)
@@ -85,7 +88,11 @@ async def mass_down_load_media_f(client, message):
     tar_id = message.chat.id
     start_t = datetime.now()
     if message.reply_to_message is not None:
-      u_out = message.text.split(" ")[1]
+      try:
+        u_out = message.text.split(" ")[1]
+      except IndexError:
+        pass
+        await status_message.edit("please type output folder name with run command")
       new_name = os.path.basename(u_out)
       output_directory = os.path.dirname(os.path.abspath(new_name))
       f = os.path.join(output_directory, new_name) + "/"
@@ -122,7 +129,11 @@ async def gp_f(client, message):
 async def scrap_seg_media_f(client, message): 
     http = urllib3.PoolManager()
     url = message.reply_to_message.text
-    n = message.text.split(" ")[1]
+    try:
+      n = message.text.split(" ")[1]
+    except IndexError:
+        pass
+        await status_message.edit("please type limit with run command")
     w=int(n)
     response = http.request('GET', url)
     soup = BeautifulSoup(response.data, "html.parser")
