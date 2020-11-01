@@ -28,10 +28,10 @@ from tobrot.helper_funcs.help_Nekmo_ffmpeg import mux_video , mux_do_video
 from tobrot.helper_funcs.run_shell_command import run_command
 
 async def mux_f(client, message):
-    status_message = await message.reply_text("Processing ...")
-    reply_to_id = message.message_id
-    if message.reply_to_message:
-      reply_to_id = message.reply_to_message.message_id
+       status_message = await message.reply_text("Processing ...")
+       reply_to_id = message.message_id
+       if message.reply_to_message:
+         reply_to_id = message.reply_to_message.message_id
        try:
          a , b , c= message.text.split("|")
          file = a.split(" ")[1]
@@ -70,10 +70,10 @@ async def mux_f(client, message):
          await status_message.edit("please type output name with run command")
     
 async def domux_f(client, message):
-    status_message = await message.reply_text("Processing ...")
-    reply_to_id = message.message_id
-    if message.reply_to_message:
-      reply_to_id = message.reply_to_message.message_id
+       status_message = await message.reply_text("Processing ...")
+       reply_to_id = message.message_id
+       if message.reply_to_message:
+          reply_to_id = message.reply_to_message.message_id
        try:
          a , b, c= message.text.split("|")
          file = a.split(" ")[1]
@@ -110,13 +110,12 @@ async def domux_f(client, message):
        except IndexError:
          pass
          await status_message.edit("please type output name with run command")
-    
  
 async def remux_f(client, message):
-    status_message = await message.reply_text("Processing ...")
-    reply_to_id = message.message_id
-    if message.reply_to_message:
-      reply_to_id = message.reply_to_message.message_id
+       status_message = await message.reply_text("Processing ...")
+       reply_to_id = message.message_id
+       if message.reply_to_message:
+         reply_to_id = message.reply_to_message.message_id
        try:
          a , c= message.text.split("|")
          file = a.split(" ")[1]
@@ -204,16 +203,16 @@ async def automux_f(client, message):
          await status_message.edit("please type output name with run command")
     
 async def autosubmux_f(client, message):
-    status_message = await message.reply_text("Processing ...")
-    reply_to_id = message.message_id
-    if message.reply_to_message:
-      reply_to_id = message.reply_to_message.message_id
-    w=message.reply_to_message.message_id
-    user_id = message.chat.id
-    u_id = int(w)
-    m = await client.get_messages(user_id, u_id)
-    if m and m.document and m.document.file_name.lower().endswith(".srt"):
-       sub = await m.download("/app/")
+       status_message = await message.reply_text("Processing ...")
+       reply_to_id = message.message_id
+       if message.reply_to_message:
+         reply_to_id = message.reply_to_message.message_id
+       w=message.reply_to_message.message_id
+       user_id = message.chat.id
+       u_id = int(w)
+       m = await client.get_messages(user_id, u_id)
+       if m and m.document and m.document.file_name.lower().endswith(".srt"):
+         sub = await m.download("/app/")
     #  
        try:
          a , c= message.text.split("|")
@@ -295,7 +294,7 @@ async def muxget_f(client, message):
          pass
          await status_message.edit("please type output name with run command")
     #
-    
+    await status_message.edit("Replied Text is not link")    
     
 async def muxyou_f(client, message):
     status_message = await message.reply_text("Processing ...")
@@ -341,7 +340,7 @@ async def muxyou_f(client, message):
           pass
           await status_message.edit("please type output name with run command")
     #
-    
+    await status_message.edit("Replied Text is not link") 
 
 
 async def gdfile_f(client, message):
@@ -389,4 +388,5 @@ async def gdfile_f(client, message):
           pass
           await status_message.edit("please type output name with run command")
     #
+    await status_message.edit("Replied Text is not link")
     
