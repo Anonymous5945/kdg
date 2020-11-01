@@ -90,21 +90,21 @@ async def mass_down_load_media_f(client, message):
     if message.reply_to_message is not None:
       try:
         u_out = message.text.split(" ")[1]
-      except IndexError:
-        pass
-        await status_message.edit("please type output folder name with run command")
-      new_name = os.path.basename(u_out)
-      output_directory = os.path.dirname(os.path.abspath(new_name))
-      f = os.path.join(output_directory, new_name) + "/"
-      for i in range(w, n):
+        new_name = os.path.basename(u_out)
+        output_directory = os.path.dirname(os.path.abspath(new_name))
+        f = os.path.join(output_directory, new_name) + "/"
+        for i in range(w, n):
           u_id = int(i)
           m = await client.get_messages(tar_id, u_id)
           if m.media:
              await m.download(f)
              await asyncio.sleep(10)
-      end_t = datetime.now()
-      ms = (end_t - start_t).seconds
+        end_t = datetime.now()
+        ms = (end_t - start_t).seconds
       await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n <code>{f}</code> \n\ncompleted in <u>{ms}</u> seconds")
+      except IndexError:
+        pass
+        await status_message.edit("please type output folder name with run command")
     else:
         #await asyncio.sleep(4)
         await mess_age.edit_text("Reply to a Telegram Media, to save to the server.")
