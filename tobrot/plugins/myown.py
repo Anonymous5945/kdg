@@ -54,12 +54,11 @@ async def mux_f(client, message):
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
-           await client.send_document(
+           await message.reply_document(
                 chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
-                disable_notification=True,
-                reply_to_message_id=reply_to_id
+                disable_notification=True
              )
            os.remove("exec.text")
            await status_message.delete()
@@ -96,12 +95,11 @@ async def domux_f(client, message):
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
-           await client.send_document(
+           await message.reply_document(
                 chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
-                disable_notification=True,
-                reply_to_message_id=reply_to_id
+                disable_notification=True
              )
            os.remove("exec.text")
            await status_message.delete()
@@ -137,12 +135,11 @@ async def remux_f(client, message):
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
-           await client.send_document(
+           await message.reply_document(
                 chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
-                disable_notification=True,
-                reply_to_message_id=reply_to_id
+                disable_notification=True
              )
            os.remove("exec.text")
            await status_message.delete()
@@ -187,12 +184,11 @@ async def automux_f(client, message):
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
-           await client.send_document(
+           await message.reply_document(
                 chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
-                disable_notification=True,
-                reply_to_message_id=reply_to_id
+                disable_notification=True
              )
            os.remove("exec.text")
            await status_message.delete()
@@ -235,12 +231,11 @@ async def autosubmux_f(client, message):
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
-           await client.send_document(
+           await message.reply_document(
                 chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
-                disable_notification=True,
-                reply_to_message_id=reply_to_id
+                disable_notification=True
              )
            os.remove("exec.text")
            await status_message.delete()
@@ -279,12 +274,11 @@ async def muxget_f(client, message):
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
-           await client.send_document(
+           await message.reply_document(
                 chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
-                disable_notification=True,
-                reply_to_message_id=reply_to_id
+                disable_notification=True
              )
            os.remove("exec.text")
            await status_message.delete()
@@ -294,7 +288,7 @@ async def muxget_f(client, message):
          pass
          await status_message.edit("please type output name with run command")
     #
-    await status_message.edit("Replied Text is not link")    
+   
     
 async def muxyou_f(client, message):
     status_message = await message.reply_text("Processing ...")
@@ -325,12 +319,11 @@ async def muxyou_f(client, message):
                 out_file.write(str(OUTPUT))
             user_id = message.from_user.id
             mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
-            await client.send_document(
+            await message.reply_document(
                 chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
-                disable_notification=True,
-                reply_to_message_id=reply_to_id
+                disable_notification=True
               )
             os.remove("exec.text")
             await status_message.delete()
@@ -340,7 +333,7 @@ async def muxyou_f(client, message):
           pass
           await status_message.edit("please type output name with run command")
     #
-    await status_message.edit("Replied Text is not link") 
+
 
 
 async def gdfile_f(client, message):
@@ -373,12 +366,11 @@ async def gdfile_f(client, message):
                 out_file.write(str(OUTPUT))
             user_id = message.from_user.id
             mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
-            await client.send_document(
+            await message.reply_document(
                 chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
-                disable_notification=True,
-                reply_to_message_id=reply_to_id
+                disable_notification=True
               )
             os.remove("exec.text")
             await status_message.delete()
@@ -388,5 +380,5 @@ async def gdfile_f(client, message):
           pass
           await status_message.edit("please type output name with run command")
     #
-    await status_message.edit("Replied Text is not link")
+
     
