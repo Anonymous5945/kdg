@@ -39,10 +39,10 @@ async def mux_f(client, message):
          output = c.split(" ")[1]
          mcover="/app/cover.jpg"
          en , on = await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-c:s", "srt", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", output])
-         e = on.decode()
+         e = on
          if not e:
            e = "No Error"
-         o = en.decode()
+         o = en
          if not o:
            o = "No Output"
          else:
@@ -80,10 +80,10 @@ async def domux_f(client, message):
          output = c.split(" ")[1]
          mcover="/app/Docover.jpg"
          en , on = await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-c:s", "srt", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", output])
-         e = on.decode()
+         e = on
          if not e:
            e = "No Error"
-         o = en.decode()
+         o = en
          if not o:
            o = "No Output"
          else:
@@ -120,10 +120,10 @@ async def remux_f(client, message):
          output = c.split(" ")[1]
          mcover="/app/cover.jpg"
          en , on = await run_command(["ffmpeg", "-i", file, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", output])
-         e = on.decode()
+         e = on
          if not e:
            e = "No Error"
-         o = en.decode()
+         o = en
          if not o:
            o = "No Output"
          else:
@@ -169,10 +169,10 @@ async def automux_f(client, message):
          output = message.text.split(" ")[1]
          mcover="/app/Docover.jpg"
          en , on = await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-c:s", "srt", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd & Enc'd By Team-D&O @dramaost TG Group", output])
-         e = on.decode()
+         e = on
          if not e:
            e = "No Error"
-         o = en.decode()
+         o = en
          if not o:
            o = "No Output"
          else:
@@ -216,10 +216,10 @@ async def autosubmux_f(client, message):
          output = c.split(" ")[1]
          mcover="/app/Docover.jpg"
          en , on = await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-c:s", "srt", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd & Enc'd By Team-D&O @dramaost TG Group", output])
-         e = on.decode()
+         e = on
          if not e:
            e = "No Error"
-         o = en.decode()
+         o = en
          if not o:
            o = "No Output"
          else:
@@ -259,10 +259,10 @@ async def muxget_f(client, message):
        try:
          u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
          en , on = await run_command(["wget", "-c", link_text, "-O", u_output])
-         e = on.decode()
+         e = on
          if not e:
            e = "No Error"
-         o = en.decode()
+         o = en
          if not o:
            o = "No Output"
          else:
@@ -304,10 +304,10 @@ async def muxyou_f(client, message):
        try:
           u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
           en , on = await run_command(["youtube-dl", "-o", u_output, link_text])
-          e = on.decode()
+          e = on
           if not e:
             e = "No Error"
-          o = en.decode()
+          o = en
           if not o:
             o = "No Output"
           else:
@@ -351,10 +351,10 @@ async def gdfile_f(client, message):
           u_output = message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
           await run_command(["chmod", "a+x", "./gdown.pl"])
           en , on = await run_command(["./gdown.pl", link_text, u_output])
-          e = on.decode()
+          e = on
           if not e:
             e = "No Error"
-          o = en.decode()
+          o = en
           if not o:
             o = "No Output"
           else:
