@@ -101,7 +101,7 @@ async def mass_down_load_media_f(client, message):
              await asyncio.sleep(10)
         end_t = datetime.now()
         ms = (end_t - start_t).seconds
-      await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n <code>{f}</code> \n\ncompleted in <u>{ms}</u> seconds")
+        await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n <code>{f}</code> \n\ncompleted in <u>{ms}</u> seconds")
       except IndexError:
         pass
         await status_message.edit("please type output folder name with run command")
