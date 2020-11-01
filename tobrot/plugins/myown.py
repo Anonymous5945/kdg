@@ -55,7 +55,6 @@ async def mux_f(client, message):
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
            await message.reply_document(
-                chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
                 disable_notification=True
@@ -96,7 +95,6 @@ async def domux_f(client, message):
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
            await message.reply_document(
-                chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
                 disable_notification=True
@@ -136,7 +134,6 @@ async def remux_f(client, message):
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
            await message.reply_document(
-                chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
                 disable_notification=True
@@ -185,7 +182,6 @@ async def automux_f(client, message):
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
            await message.reply_document(
-                chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
                 disable_notification=True
@@ -232,7 +228,6 @@ async def autosubmux_f(client, message):
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
            await message.reply_document(
-                chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
                 disable_notification=True
@@ -275,7 +270,6 @@ async def muxget_f(client, message):
            user_id = message.from_user.id
            mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
            await message.reply_document(
-                chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
                 disable_notification=True
@@ -320,7 +314,6 @@ async def muxyou_f(client, message):
             user_id = message.from_user.id
             mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
             await message.reply_document(
-                chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
                 disable_notification=True
@@ -367,7 +360,6 @@ async def gdfile_f(client, message):
             user_id = message.from_user.id
             mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
             await message.reply_document(
-                chat_id=message.chat.id,
                 document="exec.text",
                 caption= mention_req_user,
                 disable_notification=True
