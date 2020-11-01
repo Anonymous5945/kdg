@@ -113,7 +113,6 @@ async def eval_message_f(client, message):
         with open("eval.text", "w+", encoding="utf8") as out_file:
             out_file.write(str(final_output))
         await message.reply_document(
-            chat_id=message.chat.id,
             document="eval.text",
             caption=cmd,
             disable_notification=True,
