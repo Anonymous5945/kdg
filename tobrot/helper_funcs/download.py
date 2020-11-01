@@ -124,7 +124,8 @@ async def gp_f(client, message):
          response_text = await (await session.get(request_url)).text()
       await status_message.edit(response_text)
         
-async def scrap_seg_media_f(client, message): 
+async def scrap_seg_media_f(client, message):
+    status_message = await message.reply_text("Processing ...") 
     http = urllib3.PoolManager()
     url = message.reply_to_message.text
     try:
@@ -142,6 +143,7 @@ async def scrap_seg_media_f(client, message):
               i = i+1
            else:
               await message.reply_text(f"<a href='{link}'>{tght}</a>")
+      await status_message.edit("Success")
     except IndexError:
       pass
       await status_message.edit("please type limit with run command")
