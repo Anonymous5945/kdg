@@ -143,6 +143,7 @@ async def scrap_seg_media_f(client, message):
               i = i+1
            else:
               await message.reply_text(f"<a href='{link}'>{tght}</a>")
+        await sleep(15)
       await status_message.edit("Success")
     except IndexError:
       pass
