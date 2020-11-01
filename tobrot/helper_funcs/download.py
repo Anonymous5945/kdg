@@ -131,15 +131,12 @@ async def scrap_seg_media_f(client, message):
     url = message.reply_to_message.text
     try:
       n = message.text.split(" ")[1]
-    except IndexError:
-        pass
-        await status_message.edit("please type limit with run command")
-    w=int(n)
-    response = http.request('GET', url)
-    soup = BeautifulSoup(response.data, "html.parser")
-    links = soup.find_all('a')
-    i=1
-    for tag in links:
+      w=int(n)
+      response = http.request('GET', url)
+      soup = BeautifulSoup(response.data, "html.parser")
+      links = soup.find_all('a')
+      i=1
+      for tag in links:
         link = tag.get('href',None)
         tght = tag.text.strip()
         if link and "ddrive" in link:
@@ -147,6 +144,9 @@ async def scrap_seg_media_f(client, message):
               i = i+1
            else:
               await message.reply_text(f"<a href='{link}'>{tght}</a>")
+    except IndexError:
+      pass
+      await status_message.edit("please type limit with run command")
 async def wetv_f(client, message):
     status_message = await message.reply_text("Processing ...")
     with open("test.json", "w+") as fd:
