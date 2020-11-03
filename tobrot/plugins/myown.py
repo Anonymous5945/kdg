@@ -381,4 +381,18 @@ async def gdfile_f(client, message):
           await status_message.edit("please type output name with run command")
     #
 
-    
+async def vid_f(client, message):
+    status_message = await message.reply_text("Processing ...")
+    try:
+      u_output = message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
+      metadata = extractMetadata(createParser(u_output))
+      duration = 0
+      if metadata.has("duration"):
+         duration = metadata.get('duration').seconds
+      cap=os.path.basename(u_output)
+      sent_message = await message.reply_video(video=name,caption=cap,parse_mode="html",duration=duration,supports_streaming=True,disable_notification=True)
+    except IndexError:
+      pass
+      await status_message.edit("please type output name with run command")
+
+          
