@@ -32,6 +32,11 @@
       "description": "get this value from @BotFather",
       "value": ""
     },
+    "Vid_CMD_TRIGGER": {
+      "description": "Vid command trigger",
+      "value": "vid",
+      "required": false
+    },
     "EXEC_CMD_TRIGGER": {
       "description": "EXEC command trigger",
       "value": "exec",
