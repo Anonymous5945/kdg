@@ -390,7 +390,7 @@ async def vid_f(client, message):
       if metadata.has("duration"):
          duration = metadata.get('duration').seconds
       cap=os.path.basename(u_output)
-      sent_message = await message.reply_video(video=name,caption=cap,parse_mode="html",duration=duration,supports_streaming=True,disable_notification=True)
+      sent_message = await message.reply_video(video=u_output,caption=cap,parse_mode="html",duration=duration,supports_streaming=True,disable_notification=True)
     except IndexError:
       pass
       await status_message.edit("please type output name with run command")
