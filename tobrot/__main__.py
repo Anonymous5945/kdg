@@ -50,7 +50,7 @@ from pyrogram.handlers import (
     CallbackQueryHandler
 )
 
-from tobrot.plugins.myown import mux_f, domux_f, remux_f, automux_f, autosubmux_f, muxget_f, muxyou_f, gdfile_f
+from tobrot.plugins.myown import mux_f, domux_f, remux_f, automux_f, autosubmux_f, muxget_f, muxyou_f, gdfile_f, vid_f
 from tobrot.plugins.new_join_fn import new_join_f, help_message_f
 from tobrot.plugins.incoming_message_fn import incoming_youtube_dl_f
 from tobrot.plugins.status_message_fn import (
@@ -79,6 +79,12 @@ if __name__ == "__main__" :
         workers=343,
         workdir=DOWNLOAD_LOCATION
     )
+    #
+    incoming_vid_handler = MessageHandler(
+        vid_f,
+        filters=filters.command([Vid_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
+    )
+    app.add_handler(incoming_vid_handler)
     #
     incoming_gpd_handler = MessageHandler(
         gp_f,
