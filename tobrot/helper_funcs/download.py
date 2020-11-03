@@ -143,11 +143,12 @@ async def scrap_seg_media_f(client, message):
               i = i+1
            else:
               await message.reply_text(f"<a href='{link}'>{tght}</a>")
-        await sleep(15)
-      await status_message.edit("Success")
+              await sleep(6)
     except IndexError:
       pass
       await status_message.edit("please type limit with run command")
+    await status_message.edit("Success")
+
 async def wetv_f(client, message):
     status_message = await message.reply_text("Processing ...")
     with open("test.json", "w+") as fd:
