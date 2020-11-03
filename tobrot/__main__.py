@@ -38,7 +38,8 @@ from tobrot import (
     Getmux_CMD_TRIGGER,
     Gd_CMD_TRIGGER,
     Gpd_CMD_TRIGGER,
-    Wetv_CMD_TRIGGER
+    Wetv_CMD_TRIGGER,
+    Vid_CMD_TRIGGER
 )
 
 from pyrogram import (
