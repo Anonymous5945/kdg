@@ -143,7 +143,7 @@ async def scrap_seg_media_f(client, message):
               i = i+1
            else:
               await message.reply_text(f"<a href='{link}'>{tght}</a>")
-              await asyncio.sleep(6)
+              await asyncio.sleep(3)
     except IndexError:
       pass
       await status_message.edit("please type limit with run command")
