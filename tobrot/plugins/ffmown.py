@@ -34,7 +34,8 @@ async def multi_f(client, message):
          nom = len(h) + 1
          h.sort()
          n=0
-         sam = 'ffmpeg' + ' -i ' + '"'+ file + '" ' + " ".join(['-i ' + '"' + sub + "/" + j + '" ' for j in h]) + ' ' + " ".join(['-map ' + str(j) + ' ' for j in range(n,nom)]) + " ".join(['-metadata:s:s:' +str(i) + ' ' + 'language='+ j[:3] + ' ' for i,j in zip(range(n,nom) , h)]) + '-c ' + 'copy ' + '-c:s ' + 'srt ' + '-attach ' + '/app/Docover.jpg ' + '-metadata:s:t ' + 'mimetype=image/jpeg ' + '-metadata:s:t ' + 'filename=cover.jpg ' + '-metadata ' + 'title="Upl.ed By Team-D&O @dramaost TG Group" ' + '"' + out + '"'
+         w=1
+         sam = 'ffmpeg' + ' -i ' + '"'+ file + '" ' + " ".join(['-i ' + '"' + sub + "/" + j + '" ' for j in h]) + ' ' +  '-map ' +  '0:0 ' + '-map ' +  '0:1 ' + " ".join(['-map ' + str(j) + ' ' for j in range(w,nom)]) + " ".join(['-metadata:s:s:' +str(i) + ' ' + 'language='+ j[:3] + ' ' for i,j in zip(range(n,nom) , h)]) + '-c ' + 'copy ' + '-c:s ' + 'srt ' + '-attach ' + '/app/Docover.jpg ' + '-metadata:s:t ' + 'mimetype=image/jpeg ' + '-metadata:s:t ' + 'filename=cover.jpg ' + '-metadata ' + 'title="Upl.ed By Team-D&O @dramaost TG Group" ' + '"' + out + '"'
          Goh = shlex.split(sam)
          process = await asyncio.create_subprocess_exec(
                  *Goh,
