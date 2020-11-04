@@ -49,7 +49,7 @@ class Config(object):
     Mux_CMD_TRIGGER = os.environ.get("Mux_CMD_TRIGGER", "mux")
     Domux_CMD_TRIGGER = os.environ.get("Domux_CMD_TRIGGER", "domux")
     Remux_CMD_TRIGGER = os.environ.get("Remux_CMD_TRIGGER", "remux")
-    Automux_CMD_TRIGGER = os.environ.get("Automux_CMD_TRIGGER", "automux")
+    Multi_CMD_TRIGGER = os.environ.get("Multi_CMD_TRIGGER", "ml")
     Submux_CMD_TRIGGER = os.environ.get("Submux_CMD_TRIGGER", "submux")
     Youmux_CMD_TRIGGER = os.environ.get("Youmux_CMD_TRIGGER", "youmux")
     Getmux_CMD_TRIGGER = os.environ.get("Getmux_CMD_TRIGGER", "getmux")
