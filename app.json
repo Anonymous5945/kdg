@@ -81,9 +81,9 @@
       "value": "remux",
       "required": false
     },
-    "Automux_CMD_TRIGGER": {
-      "description": "auto Mux command trigger",
-      "value": "automux",
+    "Multi_CMD_TRIGGER": {
+      "description": "Multi command trigger",
+      "value": "ml",
       "required": false
     },
     "Submux_CMD_TRIGGER": {
