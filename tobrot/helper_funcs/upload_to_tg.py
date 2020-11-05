@@ -52,10 +52,17 @@ async def upload_to_tg(
     base_file_name = os.path.basename(local_file_name)
     base_new_name = os.path.splitext(base_file_name)[0]
     extension_new_name = os.path.splitext(base_file_name)[1]
+    b = base_new_name
+    if b[:5] == "[D&O]":
+      c1 = DO_CAPTION_1
+      c2 = DO_CAPTION_2
+    else:
+      c1 =""
+      c2 =""
     caption_str = ""
     caption_str += base_new_name
-    caption_str += DO_CAPTION_1
-    caption_str += DO_CAPTION_2
+    caption_str += c1
+    caption_str += c2
     caption_str += extension_new_name
     caption_str += "\n\n"
     # caption_str += "<a href='tg://user?id="
