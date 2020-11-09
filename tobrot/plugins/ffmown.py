@@ -85,29 +85,32 @@ async def arch_f(client, message):
     reply_to_id = message.message_id
     if message.reply_to_message:
        reply_to_id = message.reply_to_message.message_id
-    w=message.reply_to_message.message_id
-    user_id = message.chat.id
-    u_id = int(w)
-    m = await client.get_messages(user_id, u_id)
+       w=message.reply_to_message.message_id
+       user_id = message.chat.id
+       u_id = int(w)
+       m = await client.get_messages(user_id, u_id)
     url_parts = shlex.split(message.text)
     if len(url_parts) == 1:
       url = url_parts[0]
       folder ="/app/"
+    elif len(url_parts) == 2:
+      url = url_parts[0]
+      the_real_download_location = url_parts[1]
     else:
        await status_message.edit("out of bound")
        url =""
        folder = ""
     if url is not None:
      try:
-        if message.reply_to_message is not None:
-         if m.document.file_name.upper().endswith(("ZIP","RAR", "7Z")):
-          the_real_download_location = await client.download_media(message=message.reply_to_message, file_name=folder)
-          LOGGER.info(the_real_download_location)
-          if m.document.file_name.upper().endswith("ZIP"):
+         if m.document.file_name.upper().endswith(("ZIP","RAR", "7Z")) or if f1.endswith((".zip", ".rar", ".7z"):
+          if m.media:
+            the_real_download_location = await client.download_media(message=message.reply_to_message, file_name=folder)
+            LOGGER.info(the_real_download_location)
+          if m.document.file_name.upper().endswith("ZIP") or if f1.endswith(".zip"):
             en , on = await run_command(["unzip", the_real_download_location])
-          elif m.document.file_name.upper().endswith("RAR"):
+          elif m.document.file_name.upper().endswith("RAR") or if f1.endswith(".rar"):
             en , on = await run_command(["unrar", "x", the_real_download_location])
-          elif m.document.file_name.upper().endswith("7Z"):
+          elif m.document.file_name.upper().endswith("7Z") or if f1.endswith(".7z"):
             en , on = await run_command(["7za", "x", the_real_download_location])
           e = on
           if not e:
@@ -136,8 +139,6 @@ async def arch_f(client, message):
             await status_message.edit(OUTPUT)
          else:
             await status_message.edit("Not a Archive")
-        else:
-           await status_message.edit("Reply to Archive file to save and extract it")
      except IndexError:
           pass
           await status_message.edit("please type output name with run command")
