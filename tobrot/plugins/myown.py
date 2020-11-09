@@ -26,6 +26,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from tobrot.helper_funcs.help_Nekmo_ffmpeg import mux_video , mux_do_video
 from tobrot.helper_funcs.run_shell_command import run_command
+from telegraph import Telegraph
 
 async def mux_f(client, message):
        status_message = await message.reply_text("Processing ...")
@@ -39,6 +40,20 @@ async def mux_f(client, message):
          output = c.split(" ")[1]
          mcover="/app/cover.jpg"
          en , on = await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-c:s", "srt", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", output])
+         metadata = extractMetadata(createParser(u_output))
+         metadata = extractMetadata(createParser(u_output))
+         duration = 0
+         if metadata.has("duration"):
+            duration = metadata.get('duration').seconds
+         hours, rem = divmod(duration, 3600)
+         minutes, seconds = divmod(rem, 60)
+         Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
+         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         response = telegraph.create_page(
+         u_output + ' Media Info',
+         html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
+         )
+         file_context= 'https://telegra.ph/{}'.format(response['path'])
          e = on
          if not e:
            e = "No Error"
@@ -57,11 +72,11 @@ async def mux_f(client, message):
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
            await message.reply_document(
                 document="exec.text",
-                caption= mention_req_user,
+                caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
                 disable_notification=True
              )
            os.remove("exec.text")
-           await status_message.delete()
+           await status_message.edit(file_context)
          else:
            await status_message.edit(OUTPUT)  
        except IndexError:
@@ -80,6 +95,20 @@ async def domux_f(client, message):
          output = c.split(" ")[1]
          mcover="/app/Docover.jpg"
          en , on = await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-c:s", "srt", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", output])
+         metadata = extractMetadata(createParser(u_output))
+         metadata = extractMetadata(createParser(u_output))
+         duration = 0
+         if metadata.has("duration"):
+            duration = metadata.get('duration').seconds
+         hours, rem = divmod(duration, 3600)
+         minutes, seconds = divmod(rem, 60)
+         Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
+         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         response = telegraph.create_page(
+         u_output + ' Media Info',
+         html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
+         )
+         file_context= 'https://telegra.ph/{}'.format(response['path'])
          e = on
          if not e:
            e = "No Error"
@@ -98,11 +127,11 @@ async def domux_f(client, message):
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
            await message.reply_document(
                 document="exec.text",
-                caption= mention_req_user,
+                caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
                 disable_notification=True
              )
            os.remove("exec.text")
-           await status_message.delete()
+           await status_message.edit(file_context)
          else:
            await status_message.edit(OUTPUT)  
        except IndexError:
@@ -120,6 +149,20 @@ async def remux_f(client, message):
          output = c.split(" ")[1]
          mcover="/app/cover.jpg"
          en , on = await run_command(["ffmpeg", "-i", file, "-c", "copy", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd By Team-D&O @dramaost TG Group", output])
+         metadata = extractMetadata(createParser(u_output))
+         metadata = extractMetadata(createParser(u_output))
+         duration = 0
+         if metadata.has("duration"):
+            duration = metadata.get('duration').seconds
+         hours, rem = divmod(duration, 3600)
+         minutes, seconds = divmod(rem, 60)
+         Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
+         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         response = telegraph.create_page(
+         u_output + ' Media Info',
+         html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
+         )
+         file_context= 'https://telegra.ph/{}'.format(response['path'])
          e = on
          if not e:
            e = "No Error"
@@ -138,11 +181,11 @@ async def remux_f(client, message):
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
            await message.reply_document(
                 document="exec.text",
-                caption= mention_req_user,
+                caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
                 disable_notification=True
              )
            os.remove("exec.text")
-           await status_message.delete()
+           await status_message.edit(file_context)
          else:
            await status_message.edit(OUTPUT)  
        except IndexError:
@@ -169,6 +212,20 @@ async def automux_f(client, message):
          output = message.text.split(" ")[1]
          mcover="/app/Docover.jpg"
          en , on = await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-c:s", "srt", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd & Enc'd By Team-D&O @dramaost TG Group", output])
+         metadata = extractMetadata(createParser(u_output))
+         metadata = extractMetadata(createParser(u_output))
+         duration = 0
+         if metadata.has("duration"):
+            duration = metadata.get('duration').seconds
+         hours, rem = divmod(duration, 3600)
+         minutes, seconds = divmod(rem, 60)
+         Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
+         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         response = telegraph.create_page(
+         u_output + ' Media Info',
+         html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
+         )
+         file_context= 'https://telegra.ph/{}'.format(response['path'])
          e = on
          if not e:
            e = "No Error"
@@ -187,11 +244,11 @@ async def automux_f(client, message):
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
            await message.reply_document(
                 document="exec.text",
-                caption= mention_req_user,
+                caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
                 disable_notification=True
              )
            os.remove("exec.text")
-           await status_message.delete()
+           await status_message.edit(file_context)
          else:
            await status_message.edit(OUTPUT)  
        except IndexError:
@@ -216,6 +273,20 @@ async def autosubmux_f(client, message):
          output = c.split(" ")[1]
          mcover="/app/Docover.jpg"
          en , on = await run_command(["ffmpeg", "-i", file, "-i", sub, "-c", "copy", "-c:s", "srt", "-attach", mcover, "-metadata:s:t", "mimetype=image/jpeg", "-metadata:s:t", "filename=cover.jpg", "-metadata", "title=Upl'd & Enc'd By Team-D&O @dramaost TG Group", output])
+         metadata = extractMetadata(createParser(u_output))
+         metadata = extractMetadata(createParser(u_output))
+         duration = 0
+         if metadata.has("duration"):
+            duration = metadata.get('duration').seconds
+         hours, rem = divmod(duration, 3600)
+         minutes, seconds = divmod(rem, 60)
+         Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
+         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         response = telegraph.create_page(
+         u_output + ' Media Info',
+         html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
+         )
+         file_context= 'https://telegra.ph/{}'.format(response['path'])
          e = on
          if not e:
            e = "No Error"
@@ -234,7 +305,7 @@ async def autosubmux_f(client, message):
            mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
            await message.reply_document(
                 document="exec.text",
-                caption= mention_req_user,
+                caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
                 disable_notification=True
              )
            os.remove("exec.text")
@@ -254,11 +325,25 @@ async def muxget_f(client, message):
     user_id = message.chat.id
     u_id = int(w)
     m = await client.get_messages(user_id, u_id)
-    if m and m.text and m.text.lower().startswith("https:"):
+    if m and m.text and m.text.lower().startswith(("https:","http:")):
        link_text = m.text
        try:
          u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
          en , on = await run_command(["wget", "-c", link_text, "-O", u_output])
+         metadata = extractMetadata(createParser(u_output))
+         metadata = extractMetadata(createParser(u_output))
+         duration = 0
+         if metadata.has("duration"):
+            duration = metadata.get('duration').seconds
+         hours, rem = divmod(duration, 3600)
+         minutes, seconds = divmod(rem, 60)
+         Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
+         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         response = telegraph.create_page(
+         u_output + ' Media Info',
+         html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
+         )
+         file_context= 'https://telegra.ph/{}'.format(response['path'])
          e = on
          if not e:
            e = "No Error"
@@ -277,11 +362,11 @@ async def muxget_f(client, message):
            mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
            await message.reply_document(
                 document="exec.text",
-                caption= mention_req_user,
+                caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
                 disable_notification=True
              )
            os.remove("exec.text")
-           await status_message.delete()
+           await status_message.edit(file_context)
          else:
            await status_message.edit(OUTPUT)  
        except IndexError:
@@ -299,11 +384,25 @@ async def muxyou_f(client, message):
     user_id = message.chat.id
     u_id = int(w)
     m = await client.get_messages(user_id, u_id)
-    if m and m.text and m.text.lower().startswith("https:"):
+    if m and m.text and m.text.lower().startswith(("https:","http:")):
        link_text = m.text
        try:
           u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
           en , on = await run_command(["youtube-dl", "-o", u_output, link_text])
+          metadata = extractMetadata(createParser(u_output))
+          metadata = extractMetadata(createParser(u_output))
+          duration = 0
+          if metadata.has("duration"):
+             duration = metadata.get('duration').seconds
+          hours, rem = divmod(duration, 3600)
+          minutes, seconds = divmod(rem, 60)
+          Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
+          telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+          response = telegraph.create_page(
+          u_output + ' Media Info',
+          html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
+          )
+          file_context= 'https://telegra.ph/{}'.format(response['path'])
           e = on
           if not e:
             e = "No Error"
@@ -322,11 +421,11 @@ async def muxyou_f(client, message):
             mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
             await message.reply_document(
                 document="exec.text",
-                caption= mention_req_user,
+                caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
                 disable_notification=True
               )
             os.remove("exec.text")
-            await status_message.delete()
+            await status_message.edit(file_context)
           else:
             await status_message.edit(OUTPUT)  
        except IndexError:
@@ -345,12 +444,26 @@ async def gdfile_f(client, message):
     user_id = message.chat.id
     u_id = int(w)
     m = await client.get_messages(user_id, u_id)
-    if m and m.text and m.text.lower().startswith("https:"):
+    if m and m.text and m.text.lower().startswith(("https:","http:")):
        link_text = m.text
        try:
           u_output = message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
           await run_command(["chmod", "a+x", "./gdown.pl"])
           en , on = await run_command(["./gdown.pl", link_text, u_output])
+          metadata = extractMetadata(createParser(u_output))
+          metadata = extractMetadata(createParser(u_output))
+          duration = 0
+          if metadata.has("duration"):
+            duration = metadata.get('duration').seconds
+          hours, rem = divmod(duration, 3600)
+          minutes, seconds = divmod(rem, 60)
+          Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
+          telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+          response = telegraph.create_page(
+          u_output + ' Media Info',
+          html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
+          )
+          file_context= 'https://telegra.ph/{}'.format(response['path'])
           e = on
           if not e:
             e = "No Error"
@@ -369,11 +482,11 @@ async def gdfile_f(client, message):
             mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
             await message.reply_document(
                 document="exec.text",
-                caption= mention_req_user,
+                caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
                 disable_notification=True
               )
             os.remove("exec.text")
-            await status_message.delete()
+            await status_message.edit(file_context)
           else:
             await status_message.edit(OUTPUT)  
        except IndexError:
