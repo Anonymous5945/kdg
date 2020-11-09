@@ -152,7 +152,7 @@ if __name__ == "__main__" :
         arch_f,
         filters=filters.command([Arch_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
     )
-    app.add_handler(incoming_autosubmux_handler)
+    app.add_handler(incoming_arch_handler)
     #
     incoming_muxyou_handler = MessageHandler(
         muxyou_f,
