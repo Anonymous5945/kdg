@@ -332,15 +332,15 @@ async def autosubmux_f(client, message):
          await status_message.edit("please type output name with run command")
     
 async def muxget_f(client, message):
-    status_message = await message.reply_text("Processing ...")
-   if message.reply_to_message is not None:
-    w=message.reply_to_message.message_id
-    user_id = message.chat.id
-    u_id = int(w)
-    m = await client.get_messages(user_id, u_id)
-    if m and m.text and m.text.lower().startswith(("https:", "http:")):
-       link_text = m.text
        try:
+        if message.reply_to_message is not None:
+         status_message = await message.reply_text("Processing ...")
+         w=message.reply_to_message.message_id
+         user_id = message.chat.id
+         u_id = int(w)
+         m = await client.get_messages(user_id, u_id)
+         if m and m.text and m.text.lower().startswith(("https:", "http:")):
+           link_text = m.text  
          u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
          en , on = await run_command(["wget", "-c", link_text, "-O", u_output])
          metadata = extractMetadata(createParser(u_output))
@@ -383,25 +383,25 @@ async def muxget_f(client, message):
            os.remove("exec.text")
            await status_message.delete()
          else:
-           await status_message.edit(OUTPUT)  
+           await status_message.edit(OUTPUT)
+        else:
+           await status_message.edit("Run as Replied message")
        except IndexError:
          pass
          await status_message.edit("please type output name with run command")
-   else:
-       await status_message.edit("Run as Replied message")
-    #
+       #
    
     
 async def muxyou_f(client, message):
-    status_message = await message.reply_text("Processing ...")
-   if message.reply_to_message is not None:
-    w=message.reply_to_message.message_id
-    user_id = message.chat.id
-    u_id = int(w)
-    m = await client.get_messages(user_id, u_id)
-    if m and m.text and m.text.lower().startswith(("https:","http:")):
-       link_text = m.text
        try:
+         if message.reply_to_message is not None:
+          status_message = await message.reply_text("Processing ...")
+          w=message.reply_to_message.message_id
+          user_id = message.chat.id
+          u_id = int(w)
+          m = await client.get_messages(user_id, u_id)
+          if m and m.text and m.text.lower().startswith(("https:","http:")):
+            link_text = m.text
           u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
           en , on = await run_command(["youtube-dl", "-o", u_output, link_text])
           metadata = extractMetadata(createParser(u_output))
@@ -445,25 +445,26 @@ async def muxyou_f(client, message):
             await status_message.delete()
           else:
             await status_message.edit(OUTPUT)  
+         else:
+           await status_message.edit("Run as Replied message")
        except IndexError:
           pass
           await status_message.edit("please type output name with run command")
-   else:
-       await status_message.edit("Run as Replied message")
+
     #
 
 
 
 async def gdfile_f(client, message):
-    status_message = await message.reply_text("Processing ...")
-   if message.reply_to_message is not None:
-    w=message.reply_to_message.message_id
-    user_id = message.chat.id
-    u_id = int(w)
-    m = await client.get_messages(user_id, u_id)
-    if m and m.text and m.text.lower().startswith(("https:","http:")):
-       link_text = m.text
        try:
+        if message.reply_to_message is not None:
+          status_message = await message.reply_text("Processing ...")
+          w=message.reply_to_message.message_id
+          user_id = message.chat.id
+          u_id = int(w)
+          m = await client.get_messages(user_id, u_id)
+          if m and m.text and m.text.lower().startswith(("https:","http:")):
+           link_text = m.text
           u_output = message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
           await run_command(["chmod", "a+x", "./gdown.pl"])
           en , on = await run_command(["./gdown.pl", link_text, u_output])
@@ -508,11 +509,11 @@ async def gdfile_f(client, message):
             await status_message.delete()
           else:
             await status_message.edit(OUTPUT)  
+        else:
+           await status_message.edit("Run as Replied message")
        except IndexError:
           pass
           await status_message.edit("please type output name with run command")
-   else:
-        await status_message.edit("Run as Replied message")
     #
 
 async def vid_f(client, message):
