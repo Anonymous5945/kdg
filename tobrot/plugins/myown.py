@@ -53,7 +53,8 @@ async def mux_f(client, message):
          hours, rem = divmod(duration, 3600)
          minutes, seconds = divmod(rem, 60)
          Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
-         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         telegraph = Telegraph()
+         telegraph.create_account(short_name='1337')
          response = telegraph.create_page(
          u_output + ' Media Info',
          html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
@@ -109,7 +110,8 @@ async def domux_f(client, message):
          hours, rem = divmod(duration, 3600)
          minutes, seconds = divmod(rem, 60)
          Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
-         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         telegraph = Telegraph()
+         telegraph.create_account(short_name='1337')
          response = telegraph.create_page(
          u_output + ' Media Info',
          html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
@@ -164,7 +166,8 @@ async def remux_f(client, message):
          hours, rem = divmod(duration, 3600)
          minutes, seconds = divmod(rem, 60)
          Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
-         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         telegraph = Telegraph()
+         telegraph.create_account(short_name='1337')
          response = telegraph.create_page(
          u_output + ' Media Info',
          html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
@@ -228,7 +231,8 @@ async def automux_f(client, message):
          hours, rem = divmod(duration, 3600)
          minutes, seconds = divmod(rem, 60)
          Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
-         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         telegraph = Telegraph()
+         telegraph.create_account(short_name='1337')
          response = telegraph.create_page(
          u_output + ' Media Info',
          html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
@@ -290,7 +294,8 @@ async def autosubmux_f(client, message):
          hours, rem = divmod(duration, 3600)
          minutes, seconds = divmod(rem, 60)
          Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
-         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         telegraph = Telegraph()
+         telegraph.create_account(short_name='1337')
          response = telegraph.create_page(
          u_output + ' Media Info',
          html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
@@ -348,7 +353,8 @@ async def muxget_f(client, message):
          hours, rem = divmod(duration, 3600)
          minutes, seconds = divmod(rem, 60)
          Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
-         telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+         telegraph = Telegraph()
+         telegraph.create_account(short_name='1337')
          response = telegraph.create_page(
          u_output + ' Media Info',
          html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
@@ -408,7 +414,8 @@ async def muxyou_f(client, message):
           hours, rem = divmod(duration, 3600)
           minutes, seconds = divmod(rem, 60)
           Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
-          telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+          telegraph = Telegraph()
+          telegraph.create_account(short_name='1337')
           response = telegraph.create_page(
           u_output + ' Media Info',
           html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
@@ -470,7 +477,8 @@ async def gdfile_f(client, message):
           hours, rem = divmod(duration, 3600)
           minutes, seconds = divmod(rem, 60)
           Final_duration="{:0>2} hrs {:0>2} min {:05.2f} sec".format(int(hours),int(minutes),seconds)
-          telegraph = Telegraph()      telegraph.create_account(short_name='1337')
+          telegraph = Telegraph()
+          telegraph.create_account(short_name='1337')
           response = telegraph.create_page(
           u_output + ' Media Info',
           html_content="".join(line + "<br>" for line in metadata.exportPlaintext())
