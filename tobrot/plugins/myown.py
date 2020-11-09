@@ -332,9 +332,9 @@ async def autosubmux_f(client, message):
          await status_message.edit("please type output name with run command")
     
 async def muxget_f(client, message):
+       status_message = await message.reply_text("Processing ...")
        try:
         if message.reply_to_message is not None:
-         status_message = await message.reply_text("Processing ...")
          w=message.reply_to_message.message_id
          user_id = message.chat.id
          u_id = int(w)
@@ -393,9 +393,9 @@ async def muxget_f(client, message):
    
     
 async def muxyou_f(client, message):
+       status_message = await message.reply_text("Processing ...")
        try:
          if message.reply_to_message is not None:
-          status_message = await message.reply_text("Processing ...")
           w=message.reply_to_message.message_id
           user_id = message.chat.id
           u_id = int(w)
@@ -456,9 +456,9 @@ async def muxyou_f(client, message):
 
 
 async def gdfile_f(client, message):
+       status_message = await message.reply_text("Processing ...")
        try:
         if message.reply_to_message is not None:
-          status_message = await message.reply_text("Processing ...")
           w=message.reply_to_message.message_id
           user_id = message.chat.id
           u_id = int(w)
