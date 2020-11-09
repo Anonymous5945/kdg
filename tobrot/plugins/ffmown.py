@@ -17,10 +17,15 @@ from tobrot import (
 
 import asyncio
 import time
+import io
+import sys
+import inspect
+import os
 import shlex,subprocess
 from PIL import Image
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
+from tobrot.helper_funcs.run_shell_command import run_command
 
 async def multi_f(client, message):
        status_message = await message.reply_text("Processing ...")
@@ -88,32 +93,21 @@ async def arch_f(client, message):
     if len(url_parts) == 1:
       url = url_parts[0]
       folder ="/app/"
-    elif len(url_parts) == 2:
-      url = url_parts[0]
-      folder = url_parts[1]
-      if not os.path.exists(folder):
-        os.makedirs(folder)
     else:
        await status_message.edit("out of bound")
        url =""
-       custom_file_name = ""
+       folder = ""
     if url is not None:
      try:
         if message.reply_to_message is not None:
-         if m.document.file_name.upper().endswith("ZIP","RAR", "7Z")):
-          start_t = datetime.now()
-          c_time = time.time()
-          the_real_download_location = await client.download_media(message=message.reply_to_message, file_name=folder,progress=progress_for_pyrogram)
-          end_t = datetime.now()
-          ms = (end_t - start_t).seconds
+         if m.document.file_name.upper().endswith(("ZIP","RAR", "7Z")):
+          the_real_download_location = await client.download_media(message=message.reply_to_message, file_name=folder)
           LOGGER.info(the_real_download_location)
-          sam = os.path.basename(the_real_download_location)
-          extension = os.path.splitext(the_real_download_location)[1]
-          if extension == ".zip":
+          if m.document.file_name.upper().endswith("ZIP"):
             en , on = await run_command(["unzip", the_real_download_location])
-          elif extension == ".rar":
+          elif m.document.file_name.upper().endswith("RAR"):
             en , on = await run_command(["unrar", "x", the_real_download_location])
-          elif extension == ".7z":
+          elif m.document.file_name.upper().endswith("7Z"):
             en , on = await run_command(["7za", "x", the_real_download_location])
           e = on
           if not e:
@@ -133,7 +127,7 @@ async def arch_f(client, message):
             mention_req_user = f"<a href='tg://user?id={user_id}'>{the_real_download_location}</a>"
             await message.reply_document(
                 document="exec.text",
-                caption= mention_req_user
+                caption= mention_req_user,
                 disable_notification=True
               )
             os.remove("exec.text")
