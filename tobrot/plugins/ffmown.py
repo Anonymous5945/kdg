@@ -102,15 +102,51 @@ async def arch_f(client, message):
        folder = ""
     if url is not None:
      try:
+        if message.reply_to_message is not None:
          if m.document.file_name.upper().endswith(("ZIP","RAR", "7Z")) or if f1.endswith((".zip", ".rar", ".7z"):
-          if m.media:
-            the_real_download_location = await client.download_media(message=message.reply_to_message, file_name=folder)
-            LOGGER.info(the_real_download_location)
+          the_real_download_location = await client.download_media(message=message.reply_to_message, file_name=folder)
+          LOGGER.info(the_real_download_location)
           if m.document.file_name.upper().endswith("ZIP") or if f1.endswith(".zip"):
             en , on = await run_command(["unzip", the_real_download_location])
           elif m.document.file_name.upper().endswith("RAR") or if f1.endswith(".rar"):
             en , on = await run_command(["unrar", "x", the_real_download_location])
           elif m.document.file_name.upper().endswith("7Z") or if f1.endswith(".7z"):
+            en , on = await run_command(["7za", "x", the_real_download_location])
+          e = on
+          if not e:
+            e = "No Error"
+          o = en
+          if not o:
+            o = "No Output"
+          else:
+            _o = o.split("\n")
+            o = "\n".join(_o)
+          OUTPUT = f"**QUERY:**\n__Command:__\n\n**stderr:** \n{e}`\n**Output:**\n{o}"
+
+          if len(OUTPUT) > MAX_MESSAGE_LENGTH:
+            with open("exec.text", "w+", encoding="utf8") as out_file:
+                out_file.write(str(OUTPUT))
+            user_id = message.from_user.id
+            mention_req_user = f"<a href='tg://user?id={user_id}'>{the_real_download_location}</a>"
+            await message.reply_document(
+                document="exec.text",
+                caption= mention_req_user,
+                disable_notification=True
+              )
+            os.remove("exec.text")
+            await status_message.delete()
+          else:
+            await status_message.edit(OUTPUT)
+         else:
+            await status_message.edit("Not a Archive")
+        else:
+         if f1.endswith((".zip", ".rar", ".7z"):
+          LOGGER.info(the_real_download_location)
+          if f1.endswith(".zip"):
+            en , on = await run_command(["unzip", the_real_download_location])
+          elif f1.endswith(".rar"):
+            en , on = await run_command(["unrar", "x", the_real_download_location])
+          elif f1.endswith(".7z"):
             en , on = await run_command(["7za", "x", the_real_download_location])
           e = on
           if not e:
