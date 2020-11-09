@@ -27,6 +27,11 @@ from hachoir.parser import createParser
 from tobrot.helper_funcs.help_Nekmo_ffmpeg import mux_video , mux_do_video
 from tobrot.helper_funcs.run_shell_command import run_command
 from telegraph import Telegraph
+from pyrogram.types import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    ReplyKeyboardMarkup
+)
 
 async def mux_f(client, message):
        status_message = await message.reply_text("Processing ...")
@@ -73,10 +78,11 @@ async def mux_f(client, message):
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
-                disable_notification=True
+                disable_notification=True,
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('🌿 Media Info 🌿', url=file_context)],])
              )
            os.remove("exec.text")
-           await status_message.edit(file_context)
+           await status_message.delete()
          else:
            await status_message.edit(OUTPUT)  
        except IndexError:
@@ -128,10 +134,11 @@ async def domux_f(client, message):
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
-                disable_notification=True
+                disable_notification=True,
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('🌿 Media Info 🌿', url=file_context)],])
              )
            os.remove("exec.text")
-           await status_message.edit(file_context)
+           await status_message.delete()
          else:
            await status_message.edit(OUTPUT)  
        except IndexError:
@@ -182,10 +189,11 @@ async def remux_f(client, message):
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
-                disable_notification=True
+                disable_notification=True,
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('🌿 Media Info 🌿', url=file_context)],])
              )
            os.remove("exec.text")
-           await status_message.edit(file_context)
+           await status_message.delete()
          else:
            await status_message.edit(OUTPUT)  
        except IndexError:
@@ -245,10 +253,11 @@ async def automux_f(client, message):
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
-                disable_notification=True
+                disable_notification=True,
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('🌿 Media Info 🌿', url=file_context)],])
              )
            os.remove("exec.text")
-           await status_message.edit(file_context)
+           await status_message.delete()
          else:
            await status_message.edit(OUTPUT)  
        except IndexError:
@@ -306,7 +315,8 @@ async def autosubmux_f(client, message):
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
-                disable_notification=True
+                disable_notification=True,
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('🌿 Media Info 🌿', url=file_context)],])
              )
            os.remove("exec.text")
            await status_message.delete()
@@ -363,10 +373,11 @@ async def muxget_f(client, message):
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
-                disable_notification=True
+                disable_notification=True,
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('🌿 Media Info 🌿', url=file_context)],])
              )
            os.remove("exec.text")
-           await status_message.edit(file_context)
+           await status_message.delete()
          else:
            await status_message.edit(OUTPUT)  
        except IndexError:
@@ -422,10 +433,11 @@ async def muxyou_f(client, message):
             await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
-                disable_notification=True
+                disable_notification=True,
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('🌿 Media Info 🌿', url=file_context)],])
               )
             os.remove("exec.text")
-            await status_message.edit(file_context)
+            await status_message.delete()
           else:
             await status_message.edit(OUTPUT)  
        except IndexError:
@@ -483,10 +495,11 @@ async def gdfile_f(client, message):
             await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
-                disable_notification=True
+                disable_notification=True,
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('🌿 Media Info 🌿', url=file_context)],])
               )
             os.remove("exec.text")
-            await status_message.edit(file_context)
+            await status_message.delete()
           else:
             await status_message.edit(OUTPUT)  
        except IndexError:
