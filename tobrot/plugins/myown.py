@@ -333,14 +333,12 @@ async def autosubmux_f(client, message):
     
 async def muxget_f(client, message):
     status_message = await message.reply_text("Processing ...")
+   if message.reply_to_message is not None:
     w=message.reply_to_message.message_id
-    reply_to_id = message.message_id
-    if message.reply_to_message:
-      reply_to_id = message.reply_to_message.message_id
     user_id = message.chat.id
     u_id = int(w)
     m = await client.get_messages(user_id, u_id)
-    if m and m.text and m.text.lower().startswith(("https:","http:")):
+    if m and m.text and m.text.lower().startswith(("https:", "http:")):
        link_text = m.text
        try:
          u_output= message.text.split(" ", 1)[1].rsplit(" ", 0)[0]
@@ -389,15 +387,15 @@ async def muxget_f(client, message):
        except IndexError:
          pass
          await status_message.edit("please type output name with run command")
+   else:
+       await status_message.edit("Run as Replied message")
     #
    
     
 async def muxyou_f(client, message):
     status_message = await message.reply_text("Processing ...")
+   if message.reply_to_message is not None:
     w=message.reply_to_message.message_id
-    reply_to_id = message.message_id
-    if message.reply_to_message:
-      reply_to_id = message.reply_to_message.message_id
     user_id = message.chat.id
     u_id = int(w)
     m = await client.get_messages(user_id, u_id)
@@ -450,16 +448,16 @@ async def muxyou_f(client, message):
        except IndexError:
           pass
           await status_message.edit("please type output name with run command")
+   else:
+       await status_message.edit("Run as Replied message")
     #
 
 
 
 async def gdfile_f(client, message):
     status_message = await message.reply_text("Processing ...")
+   if message.reply_to_message is not None:
     w=message.reply_to_message.message_id
-    reply_to_id = message.message_id
-    if message.reply_to_message:
-      reply_to_id = message.reply_to_message.message_id
     user_id = message.chat.id
     u_id = int(w)
     m = await client.get_messages(user_id, u_id)
@@ -513,6 +511,8 @@ async def gdfile_f(client, message):
        except IndexError:
           pass
           await status_message.edit("please type output name with run command")
+   else:
+        await status_message.edit("Run as Replied message")
     #
 
 async def vid_f(client, message):
