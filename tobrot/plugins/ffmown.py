@@ -93,6 +93,7 @@ async def arch_f(client, message):
     if len(url_parts) == 1:
       url = url_parts[0]
       folder ="/app/"
+      f1=""
     elif len(url_parts) == 2:
       url = url_parts[0]
       f1 = url_parts[1]
@@ -103,7 +104,8 @@ async def arch_f(client, message):
        folder = ""
     if url is not None:
      try:
-        if message.reply_to_message is not None:
+       if message.reply_to_message is not None:
+        if m.media:
          if m.document.file_name.upper().endswith(("ZIP","RAR", "7Z")):
           the_real_download_location = await client.download_media(message=message.reply_to_message, file_name=folder)
           LOGGER.info(the_real_download_location)
@@ -141,6 +143,8 @@ async def arch_f(client, message):
          else:
             await status_message.edit("Not a Archive")
         else:
+            await status_message.edit("Not a media")
+       else:
          if f1.endswith((".zip", ".rar", ".7z")):
           LOGGER.info(the_real_download_location)
           if f1.endswith(".zip"):
