@@ -67,6 +67,10 @@ async def upload_to_tg(
       caption_str += "<b>"
       caption_str += DO_CAPTION_3
       caption_str += "</b>"
+    elif local_file_name.upper().endswith(("MP3", "M4A", "M4B", "FLAC", "WAV", "RAR", "7Z", "ZIP")):
+      caption_str = ""
+      caption_str += base_new_name
+      caption_str += extension_new_name
     else:
       caption_str = ""
       caption_str += base_new_name
