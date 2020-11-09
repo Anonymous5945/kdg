@@ -75,7 +75,7 @@ async def mux_f(client, message):
            with open("exec.text", "w+", encoding="utf8") as out_file:
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
-           mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
+           mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>"
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
@@ -132,7 +132,7 @@ async def domux_f(client, message):
            with open("exec.text", "w+", encoding="utf8") as out_file:
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
-           mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
+           mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>"
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
@@ -188,7 +188,7 @@ async def remux_f(client, message):
            with open("exec.text", "w+", encoding="utf8") as out_file:
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
-           mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
+           mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>"
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
@@ -253,7 +253,7 @@ async def automux_f(client, message):
            with open("exec.text", "w+", encoding="utf8") as out_file:
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
-           mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
+           mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>"
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
@@ -316,7 +316,7 @@ async def autosubmux_f(client, message):
            with open("exec.text", "w+", encoding="utf8") as out_file:
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
-           mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>\n\n"
+           mention_req_user = f"<a href='tg://user?id={user_id}'>{output}</a>"
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
@@ -375,7 +375,7 @@ async def muxget_f(client, message):
            with open("exec.text", "w+", encoding="utf8") as out_file:
                out_file.write(str(OUTPUT))
            user_id = message.from_user.id
-           mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
+           mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>"
            await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
@@ -436,7 +436,7 @@ async def muxyou_f(client, message):
             with open("exec.text", "w+", encoding="utf8") as out_file:
                 out_file.write(str(OUTPUT))
             user_id = message.from_user.id
-            mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
+            mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>"
             await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
@@ -499,7 +499,7 @@ async def gdfile_f(client, message):
             with open("exec.text", "w+", encoding="utf8") as out_file:
                 out_file.write(str(OUTPUT))
             user_id = message.from_user.id
-            mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>\n\n"
+            mention_req_user = f"<a href='tg://user?id={user_id}'>{u_output}</a>"
             await message.reply_document(
                 document="exec.text",
                 caption= mention_req_user + "\n\n" + "Duration : " + str(duration) + " seconds" + "\n" + "In Standard Time :" + "\n" + Final_duration,
