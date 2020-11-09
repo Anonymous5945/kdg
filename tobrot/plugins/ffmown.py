@@ -141,7 +141,7 @@ async def arch_f(client, message):
          else:
             await status_message.edit("Not a Archive")
         else:
-         if f1.endswith((".zip", ".rar", ".7z"):
+         if f1.endswith((".zip", ".rar", ".7z")):
           LOGGER.info(the_real_download_location)
           if f1.endswith(".zip"):
             en , on = await run_command(["unzip", the_real_download_location])
