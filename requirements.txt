@@ -6,3 +6,4 @@ requests
 tgcrypto
 beautifulsoup4
 youtube-dl
+telegraph
