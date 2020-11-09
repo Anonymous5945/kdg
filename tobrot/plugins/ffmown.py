@@ -95,7 +95,8 @@ async def arch_f(client, message):
       folder ="/app/"
     elif len(url_parts) == 2:
       url = url_parts[0]
-      the_real_download_location = url_parts[1]
+      f1 = url_parts[1]
+      the_real_download_location = f1
     else:
        await status_message.edit("out of bound")
        url =""
@@ -103,14 +104,14 @@ async def arch_f(client, message):
     if url is not None:
      try:
         if message.reply_to_message is not None:
-         if m.document.file_name.upper().endswith(("ZIP","RAR", "7Z")) or if f1.endswith((".zip", ".rar", ".7z"):
+         if m.document.file_name.upper().endswith(("ZIP","RAR", "7Z")):
           the_real_download_location = await client.download_media(message=message.reply_to_message, file_name=folder)
           LOGGER.info(the_real_download_location)
-          if m.document.file_name.upper().endswith("ZIP") or if f1.endswith(".zip"):
+          if m.document.file_name.upper().endswith("ZIP"):
             en , on = await run_command(["unzip", the_real_download_location])
-          elif m.document.file_name.upper().endswith("RAR") or if f1.endswith(".rar"):
+          elif m.document.file_name.upper().endswith("RAR"):
             en , on = await run_command(["unrar", "x", the_real_download_location])
-          elif m.document.file_name.upper().endswith("7Z") or if f1.endswith(".7z"):
+          elif m.document.file_name.upper().endswith("7Z"):
             en , on = await run_command(["7za", "x", the_real_download_location])
           e = on
           if not e:
