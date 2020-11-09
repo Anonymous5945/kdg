@@ -86,9 +86,9 @@
       "value": "ml",
       "required": false
     },
-    "Submux_CMD_TRIGGER": {
-      "description": "sub Mux command trigger",
-      "value": "submux",
+    "Arch_CMD_TRIGGER": {
+      "description": "arch command trigger",
+      "value": "arc",
       "required": false
     },
     "Youmux_CMD_TRIGGER": {
