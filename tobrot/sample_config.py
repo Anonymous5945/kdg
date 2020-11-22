@@ -57,3 +57,4 @@ class Config(object):
     Gpd_CMD_TRIGGER = os.environ.get("Gpd_CMD_TRIGGER", "gp")
     Wetv_CMD_TRIGGER = os.environ.get("Wetv_CMD_TRIGGER", "we")
     Vid_CMD_TRIGGER = os.environ.get("Vid_CMD_TRIGGER", "vid")
+    Fir_CMD_TRIGGER = os.environ.get("Fir_CMD_TRIGGER", "")
