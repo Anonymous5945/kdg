@@ -32,113 +32,14 @@
       "description": "get this value from @BotFather",
       "value": ""
     },
-    "Vid_CMD_TRIGGER": {
-      "description": "Vid command trigger",
-      "value": "vid",
-      "required": false
-    },
-    "EXEC_CMD_TRIGGER": {
-      "description": "EXEC command trigger",
-      "value": "exec",
-      "required": false
-    },
-    "Eval_CMD_TRIGGER": {
-      "description": "Eval command trigger",
-      "value": "eval",
+    "Fir_CMD_TRIGGER": {
+      "description": "initial command trigger",
+      "value": "",
       "required": false
     },
     "TG_OFFENSIVE_API": {
       "description": "should be an URL accepting the FormParams {i}, {m}, and {t}",
       "required": false
-    },
-    "Wetv_CMD_TRIGGER": {
-      "description": "wetv command trigger",
-      "value": "we",
-      "required": false
-    },
-    "Ytdl_CMD_TRIGGER": {
-      "description": "ytdl command trigger",
-      "value": "ytdl",
-      "required": false
-    },
-    "TELEGRAM_CMD_TRIGGER": {
-      "description": "Telegram command trigger",
-      "value": "down",
-      "required": false
-    },
-    "Mux_CMD_TRIGGER": {
-      "description": "single Mux command trigger",
-      "value": "mux",
-      "required": false
-    },
-    "Domux_CMD_TRIGGER": {
-      "description": "Do mux command trigger",
-      "value": "domux",
-      "required": false
-    },
-    "Remux_CMD_TRIGGER": {
-      "description": "remux command trigger",
-      "value": "remux",
-      "required": false
-    },
-    "Multi_CMD_TRIGGER": {
-      "description": "Multi command trigger",
-      "value": "ml",
-      "required": false
-    },
-    "Arch_CMD_TRIGGER": {
-      "description": "arch command trigger",
-      "value": "arc",
-      "required": false
-    },
-    "Youmux_CMD_TRIGGER": {
-      "description": "you Mux command trigger",
-      "value": "you",
-      "required": false
-    },
-    "Getmux_CMD_TRIGGER": {
-      "description": "get Mux command trigger",
-      "value": "get",
-      "required": false
-    },
-    "Gd_CMD_TRIGGER": {
-      "description": "gd command trigger",
-      "value": "gd",
-      "required": false
-    },
-    "Gpd_CMD_TRIGGER": {
-      "description": "gp link command trigger",
-      "value": "gp",
-      "required": false
-    },
-    "Mass_CMD_TRIGGER": {
-      "description": "Mass Download command trigger",
-      "value": "mass",
-      "required": false
-    },
-    "Scrapx_CMD_TRIGGER": {
-      "description": "scrap one by one command trigger",
-      "value": "scrap",
-      "required": false
-    },
-    "Upload_CMD_TRIGGER": {
-      "description": "upload command trigger",
-      "value": "upload",
-      "required": false
-    },
-    "Save_Thumb_CMD_TRIGGER": {
-
-      "description": "Save thumbnail command trigger",
-      "value": "save",
-      "required": false
-
-    },
-    "Clear_thumb_CMD_TRIGGER": {
-
-      "description": "clear  thumbnail command trigger",
-      "value": "clear",
-      "required": false
-
     },
     "DO_CAPTION_1": {
       "description": ".Enc'd.&.Upl'd.By.Team.D&O-",
@@ -157,7 +58,7 @@
     },
     "AUTH_CHANNEL": {
       "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
-      "value": "-1001215557536 -1001454596428 -1001139792623 -1001343951559 -1001450597220"
+      "value": "-1001215557536 -1001454596428 -1001450597220 -1001139792623 -1001343951559 -1001291580003 -1001302900717 -1001428281865"
     },
     "CHUNK_SIZE": {
       "description": "should be an integer",
