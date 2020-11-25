@@ -21,6 +21,12 @@ import traceback
 import aiohttp
 import json
 import urllib.parse
+from telegraph import Telegraph
+from pyrogram.types import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    ReplyKeyboardMarkup
+)
 
 from datetime import datetime
 from pyrogram import Client, filters
@@ -62,7 +68,15 @@ async def down_load_media_f(client, message):
         if extension == ".srt" or extension == ".vtt":
            with open(the_real_download_location) as myfile:
              head = [next(myfile) for x in range(7)]
-             await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n<code>{the_real_download_location}</code>\n\n<b>First 7 lines of Sub:</b>\n\n<code>{head}</code>\n\nFinished in <u>{ms}</u> seconds")
+             with open(u_output) as myfile:
+               telegraph = Telegraph()
+               telegraph.create_account(short_name='1337')
+               response = telegraph.create_page(
+                 'Subtitle Content',
+                 html_content="".join([next(myfile) + "<br>" for x in range(50)])
+                    )
+               file_context= 'https://telegra.ph/{}'.format(response['path'])
+             await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n<code>{the_real_download_location}</code>\n\n<b>First 7 lines of Sub:</b>\n\n<code>{head}</code>\n\nFinished in <u>{ms}</u> seconds",reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('🌿 Subtitle Content 🌿', url=file_context)],]))
              the_real_download_location_g = os.path.basename(the_real_download_location)
              LOGGER.info(the_real_download_location_g)
         else:
