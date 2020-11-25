@@ -21,6 +21,9 @@ import traceback
 import aiohttp
 import json
 import urllib.parse
+import urllib.parse
+import shlex
+import requests
 from telegraph import Telegraph
 from pyrogram.types import (
     InlineKeyboardButton,
@@ -143,21 +146,46 @@ async def scrap_seg_media_f(client, message):
     http = urllib3.PoolManager()
     url = message.reply_to_message.text
     try:
-      n = message.text.split(" ")[1]
-      w=int(n)
-      response = http.request('GET', url)
-      soup = BeautifulSoup(response.data, "html.parser")
-      links = soup.find_all('a')
-      i=1
-      for tag in links:
+      url_parts = shlex.split(message.text)
+      if len(url_parts) == 2:
+       n = url_parts[1]
+       f1= "2"
+      elif len(url_parts) == 3:
+       n1 = url_parts[1]
+       n2 = url_parts[2]
+       f1 = "3"
+      if f1 == "2":
+       w=int(n)
+       response = http.request('GET', url)
+       soup = BeautifulSoup(response.data, "html.parser")
+       links = soup.find_all('a')
+       i=1
+       for tag in links:
+         link = tag.get('href',None)
+         tght = tag.text.strip()
+         if link and "ddrive" in link:
+            if i < w:
+               i = i+1
+            else:
+               await message.reply_text(f"<a href='{link}'>{tght}</a>")
+               await asyncio.sleep(3)
+      else:
+       w1=int(n1)
+       w2=int(n2)
+       page = requests.get(url)
+       soup = BeautifulSoup(page.text, 'html.parser')
+       links = soup.find_all('a')
+       i= 1
+       for tag in links:
         link = tag.get('href',None)
         tght = tag.text.strip()
-        if link and "ddrive" in link:
-           if i < w:
-              i = i+1
-           else:
-              await message.reply_text(f"<a href='{link}'>{tght}</a>")
-              await asyncio.sleep(3)
+        if link and "www.iq.com/play" in link:
+         if i > w1 and i < w2:
+           await message.reply_text(link)
+           await asyncio.sleep(3)
+           i=i+1
+         else:
+            i=i+1
     except IndexError:
       pass
       await status_message.edit("please type limit with run command")
