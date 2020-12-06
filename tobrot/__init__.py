@@ -18,6 +18,10 @@ API_HASH = Config.API_HASH
 AUTH_CHANNEL = Config.AUTH_CHANNEL
 AUTH_CHANNEL.add(-1001291580003)
 AUTH_CHANNEL = list(AUTH_CHANNEL)
+user_ids1 = Config.user_ids1
+user_ids1 = list(user_ids1)
+user_ids2 = Config.user_ids2
+user_ids2 = list(user_ids2)
 DOWNLOAD_LOCATION = Config.DOWNLOAD_LOCATION
 EXEC_CMD_TRIGGER = Config.Fir_CMD_TRIGGER + Config.EXEC_CMD_TRIGGER
 MAX_FILE_SIZE = Config.MAX_FILE_SIZE
