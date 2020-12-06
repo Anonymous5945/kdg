@@ -60,6 +60,14 @@
       "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
       "value": "-1001215557536 -1001454596428 -1001450597220 -1001139792623 -1001343951559 -1001291580003 -1001302900717 -1001428281865 -1001486147767"
     },
+    "user_ids1": {
+      "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
+      "value": "-1001219171544 -1001366455182"
+    },
+    "user_ids2": {
+      "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
+      "value": "-1001165009913 -1001093214354"
+    },
     "CHUNK_SIZE": {
       "description": "should be an integer",
       "value": "128",
