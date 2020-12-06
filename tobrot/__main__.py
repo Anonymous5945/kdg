@@ -29,8 +29,6 @@ from tobrot import (
     TELEGRAM_CMD_TRIGGER,
     Mass_CMD_TRIGGER,
     Scrapx_CMD_TRIGGER,
-    Mux_CMD_TRIGGER,
-    Domux_CMD_TRIGGER,
     Remux_CMD_TRIGGER,
     Multi_CMD_TRIGGER,
     Arch_CMD_TRIGGER,
@@ -39,7 +37,9 @@ from tobrot import (
     Gd_CMD_TRIGGER,
     Gpd_CMD_TRIGGER,
     Wetv_CMD_TRIGGER,
-    Vid_CMD_TRIGGER
+    Vid_CMD_TRIGGER,
+    kdg1_CMD_TRIGGER,
+    kdg2_CMD_TRIGGER
 )
 
 from pyrogram import (
@@ -65,7 +65,7 @@ from tobrot.plugins.custom_thumbnail import (
     save_thumb_nail,
     clear_thumb_nail
 )
-
+from tobrot.plugins.forwardg import kdg1_f,kdg2_f
 from tobrot.helper_funcs.download import down_load_media_f, mass_down_load_media_f , scrap_seg_media_f, gp_f , wetv_f
 
 if __name__ == "__main__" :
@@ -124,17 +124,17 @@ if __name__ == "__main__" :
     )
     app.add_handler(incoming_telegram_download_handler)
     #
-    incoming_mux_handler = MessageHandler(
-        mux_f,
-        filters=filters.command([Mux_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
+    incoming_kdg1_handler = MessageHandler(
+        kdg1_f,
+        filters=filters.command([kdg1_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
     )
-    app.add_handler(incoming_mux_handler)
+    app.add_handler(incoming_kdg1_handler)
     #
-    incoming_domux_handler = MessageHandler(
-        domux_f,
-        filters=filters.command([Domux_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
+    incoming_kdg2_handler = MessageHandler(
+        kdg2_f,
+        filters=filters.command([kdg2_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
     )
-    app.add_handler(incoming_domux_handler)
+    app.add_handler(incoming_kdg2_handler)
     #
     incoming_remux_handler = MessageHandler(
         remux_f,
