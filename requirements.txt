@@ -1,9 +1,10 @@
-aiohttp
-hachoir
-Pillow
-pyrogram
+asyncio==3.4.3
+aiohttp==3.6.2
+hachoir==3.1.1
+Pillow==7.2.0
+Pyrogram==1.0.7
+TgCrypto==1.2.1
 requests
-tgcrypto
 beautifulsoup4
 youtube-dl
 telegraph
