@@ -3,7 +3,7 @@ aiohttp==3.6.2
 hachoir==3.1.1
 Pillow==7.2.0
 Pyrogram==1.1.0
-TgCrypto==1.2.1
+TgCrypto==1.2.2
 requests
 beautifulsoup4
 youtube-dl
