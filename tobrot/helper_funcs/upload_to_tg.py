@@ -371,7 +371,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                     )
                     
                   )
-                  await asyncio.sleep(4)
+                  
                  else:
                   sent_message = await message.reply_document(
                     document=local_file_name,
@@ -389,7 +389,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                     )
                     
                   )
-                  await asyncio.sleep(4)
+                  
             else:
                   sent_message = await message.reply_document(
                     document=local_file_name,
@@ -407,7 +407,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                     )
                     
                   )
-                  await asyncio.sleep(4)
+                  
             if thumb is not None:
                 os.remove(thumb)
     except Exception as e:
