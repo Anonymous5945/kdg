@@ -73,7 +73,7 @@ async def upload_to_tg(
      q2=[x for x in q2 if x]
      n1=len(p2)
      n2=len(q2)
-     if n1 == n2:
+     if n1 == n2 and n1 > 0:
       i=" , ".join(j  for j in p2)
       mux=f"<b>Muxed Subtitles : {i}</b>"
      else:
