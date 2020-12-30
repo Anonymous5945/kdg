@@ -352,14 +352,14 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                  if re.search(h,b):
                   m4=f"<b>Join: {s}</b>"
                   if local_file_name[:5] == "[D&O]":
-                    caption_str = f"<code>{base_new_name}{DO_CAPTION_1}</code>{DO_CAPTION_2}<code>{extension_new_name}</code>\n\n{m4}\n\n<b>{m2}{m3}</b>"
+                    caption_str1 = f"<code>{base_new_name}{DO_CAPTION_1}</code>{DO_CAPTION_2}<code>{extension_new_name}</code>\n\n{m4}\n\n<b>{m2}{m3}</b>"
                   else:
-                    caption_str = f"{base_new_name}{extension_new_name}\n\n{m4}\n\n<b>{m2}{m3}</b>"
+                    caption_str1 = f"{base_new_name}{extension_new_name}\n\n{m4}\n\n<b>{m2}{m3}</b>"
                   sent_message = await message.reply_document(
                     document=local_file_name,
                     # quote=True,
                     thumb=thumb,
-                    caption=caption_str,
+                    caption=caption_str1,
                     parse_mode="html",
                     disable_notification=True,
                     # reply_to_message_id=message.reply_to_message.message_id,
