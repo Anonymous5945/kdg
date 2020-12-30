@@ -55,6 +55,7 @@ async def upload_to_tg(
 ):
    
     LOGGER.info(local_file_name)
+    m2=''
     if local_file_name.upper().endswith(("MKV","MP4")):
      input_file=local_file_name
      cmnd = f"ffprobe -loglevel error -select_streams s -show_entries stream_tags=title -of csv=p=0 {input_file}".split(" ")
