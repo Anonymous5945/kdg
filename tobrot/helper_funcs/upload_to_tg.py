@@ -209,7 +209,8 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
      s = re.sub("X265", 'x265', s)
      s = re.sub("X264", 'x264', s)
      out_file_name = os.path.join(out_dir, s)
-     local_file_name=os.rename(local_file_name,out_file_name)
+     os.rename(local_file_name,out_file_name)
+     local_file_name=out_file_name
      await status_message.edit(local_file_name)
    else:
     sent_message = None
