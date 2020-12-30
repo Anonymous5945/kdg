@@ -13,6 +13,7 @@ LOGGER = logging.getLogger(__name__)
 
 import asyncio
 import os
+import re
 import time
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -36,7 +37,9 @@ from tobrot import (
     DOWNLOAD_LOCATION,
     DO_CAPTION_1,
     DO_CAPTION_2,
-    DO_CAPTION_3
+    DO_CAPTION_3,
+    chan_ids,
+    name_ids
 )
 
 
@@ -309,8 +312,17 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                     )
                     # quote=True,
                 )
-            else:
-                sent_message = await message.reply_document(
+            elif local_file_name.lower().startswith(("@dramaost","[d&o]")):
+                for l , s in zip(name_ids,chan_ids):
+                 h=l.lower()
+                 b=local_file_name.lower()
+                 if re.search(h,b):
+                  m4=f"<b>Join: {s}</b>"
+                  if local_file_name[:5] == "[D&O]":
+                    caption_str = f"<code>{base_new_name}{DO_CAPTION_1}</code>{DO_CAPTION_2}<code>{extension_new_name}</code>\n\n{m4}\n\n<b>{m2}{m3}</b>"
+                  else:
+                    caption_str = f"{base_new_name}{extension_new_name}\n\n{m4}\n\n<b>{m2}{m3}</b>"
+                  sent_message = await message.reply_document(
                     document=local_file_name,
                     # quote=True,
                     thumb=thumb,
@@ -325,8 +337,44 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                         start_time
                     )
                     
-                )
-                await asyncio.sleep(4)
+                  )
+                  await asyncio.sleep(4)
+                 else:
+                  sent_message = await message.reply_document(
+                    document=local_file_name,
+                    # quote=True,
+                    thumb=thumb,
+                    caption=caption_str,
+                    parse_mode="html",
+                    disable_notification=True,
+                    # reply_to_message_id=message.reply_to_message.message_id,
+                    progress=progress_for_pyrogram,
+                    progress_args=(
+                        "trying to upload",
+                        message_for_progress_display,
+                        start_time
+                    )
+                    
+                  )
+                  await asyncio.sleep(4)
+            else:
+                  sent_message = await message.reply_document(
+                    document=local_file_name,
+                    # quote=True,
+                    thumb=thumb,
+                    caption=caption_str,
+                    parse_mode="html",
+                    disable_notification=True,
+                    # reply_to_message_id=message.reply_to_message.message_id,
+                    progress=progress_for_pyrogram,
+                    progress_args=(
+                        "trying to upload",
+                        message_for_progress_display,
+                        start_time
+                    )
+                    
+                  )
+                  await asyncio.sleep(4)
             if thumb is not None:
                 os.remove(thumb)
     except Exception as e:
