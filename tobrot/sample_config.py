@@ -10,6 +10,8 @@ class Config(object):
     # to store the channel ID who are authorized to use the bot
     user_ids1 = set(int(x) for x in os.environ.get("user_ids1", "").split())
     user_ids2 = set(int(x) for x in os.environ.get("user_ids2", "").split())
+    name_ids = os.environ.get("name_ids", "").split()
+    chan_ids = os.environ.get("chan_ids", "").split()
     AUTH_CHANNEL = set(int(x) for x in os.environ.get("AUTH_CHANNEL", "").split())
     # the download location, where the HTTP Server runs
     DOWNLOAD_LOCATION = "./DOWNLOADS"
