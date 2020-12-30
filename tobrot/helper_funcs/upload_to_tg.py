@@ -170,7 +170,48 @@ async def upload_to_tg(
 
 
 async def upload_single_file(message, local_file_name, caption_str, from_user, edit_media):
-    await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
+   await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
+   
+   if len(base_file_name) > 64 and base_file_name.lower().startswith(("@dramaost","[d&o]")):
+     status_message = await message.reply_text("Renaming start")
+     h=base_file_name
+     out_dir = os.path.dirname(os.path.abspath(local_file_name))
+     g=f"opus opus2.0 aac aac2.0 ddp5.1 ddp2.0 ddp2 h264 h.264 x264 10bit 2017 2018 2019 2020 2021 nf webdl web-dl webrip webhd web-hd web-rip".split(" ")
+     c=0
+     f=h.lower()
+     f = re.sub("_", '.', f)
+     f = re.sub("web.dl", 'webdl', f)
+     if f[:3] == "d&o" :
+       f = re.sub("d&o", '[d&o]', f)
+     for i in g :
+       if len(f) <= 64:
+            break
+       if re.search(i,f):
+         f = re.sub("."+i, '', f)
+     if len(f)>64:
+       f = re.sub("@dramaost.", '', f)
+     p=f.split('.')
+     s= '.'.join(i.capitalize() for i in p)
+     s = re.sub("Nf", 'NF', s)
+     s = re.sub("Web-dl", 'WEB-DL', s)
+     s = re.sub("Webdl", 'WEB-DL', s)
+     s = re.sub("Webrip", 'WEBRip', s)
+     s = re.sub("Sh3lby", 'SH3LBY', s)
+     s = re.sub("sh3lby", 'SH3LBY', s)
+     s = re.sub("ost", 'OST', s)
+     s = re.sub("Mkv", 'mkv', s)
+     s = re.sub("d&o", 'D&O', s)
+     s = re.sub("D&o", 'D&O', s)
+     s = re.sub("S01e", 'S01E', s)
+     s = re.sub("S02e", 'S02E', s)
+     s = re.sub("S03e", 'S03E', s)
+     s = re.sub("S04e", 'S04E', s)
+     s = re.sub("X265", 'x265', s)
+     s = re.sub("X264", 'x264', s)
+     out_file_name = os.path.join(out_dir, s)
+     local_file_name=os.rename(local_file_name,out_file_name)
+     await status_message.edit(local_file_name)
+   else:
     sent_message = None
     start_time = time.time()
     #
