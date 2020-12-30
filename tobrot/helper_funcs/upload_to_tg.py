@@ -15,6 +15,8 @@ import asyncio
 import os
 import re
 import time
+import sys, subprocess, shlex
+from subprocess import call
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
@@ -53,9 +55,38 @@ async def upload_to_tg(
 ):
    
     LOGGER.info(local_file_name)
+    if local_file_name.upper().endswith(("MKV","MP4"))
+     input_file=local_file_name
+     cmnd = f"ffprobe -loglevel error -select_streams s -show_entries stream_tags=title -of csv=p=0 {input_file}".split(" ")
+     p = subprocess.Popen(cmnd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+     out, err =  p.communicate()
+     p=out.decode("utf-8")
+     cmnd = f"ffprobe -loglevel error -select_streams s -show_entries stream_tags=language -of csv=p=0 {input_file}".split(" ")
+     p1 = subprocess.Popen(cmnd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+     out1, err1 =  p1.communicate()
+     q=out1.decode("utf-8")
+     p2=p.split('\n')
+     q2=q.split('\n')
+     p2=[x for x in p2 if x]
+     q2=[x for x in q2 if x]
+     n1=len(p2)
+     n2=len(q2)
+     if n1 == n2:
+      i=" , ".join(j  for j in p2)
+      mux=f"<b>Muxed Subtitles : {i}</b>"
+     else:
+        stop=["und"]
+        i = [s.lower() for s in q.split() if s.lower() not in stop]
+        n3=len(i)
+        if n3 > 0:
+         mux= f"<b>Muxed Subtitles : {i}</b>"
+        else:
+         mux= f"<b>🍁 Muxed English Subtitles 🍁</b>"
     m3 = f"<a href='http://t.me/kdramaupdates'>Ongoing</a> | <a href='http://t.me/dramaindexchannel'>Index</a> | <a href='http://t.me/Korean_dramas_world'>Completed</a> | <a href='http://t.me/TeamDnO'>D&O</a>"
 
-    m2 = f"<a href='https://telegra.ph/Muxed-English-Subtitles-12-29-9'>🍁 Muxed English Subtitle 🍁</a>\n\n"
+    m2 = f"<a href='https://telegra.ph/Muxed-English-Subtitles-12-29-9'>{mux}</a>\n\n"
 
     base_file_name = os.path.basename(local_file_name)
     base_new_name = os.path.splitext(base_file_name)[0]
