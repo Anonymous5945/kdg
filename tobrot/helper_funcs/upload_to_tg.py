@@ -75,18 +75,19 @@ async def upload_to_tg(
      n2=len(q2)
      if n1 == n2 and n1 > 0:
       i=" , ".join(j  for j in p2)
-      mux=f"<b>Muxed Subtitles : {i}</b>"
+      mux=f"<b>{i}</b>"
+      m2 = f"<b>Muxed Subtitles : </b><a href='https://telegra.ph/Muxed-English-Subtitles-12-29-9'>{mux}</a>\n\n"
      else:
         stop=["und"]
         i = [s.lower() for s in q.split() if s.lower() not in stop]
         n3=len(i)
         if n3 > 0:
-         mux= f"<b>Muxed Subtitles : {i}</b>"
+         mux= f"<b>{i}</b>"
+         m2 = f"<b>Muxed Subtitles : </b><a href='https://telegra.ph/Muxed-English-Subtitles-12-29-9'>{mux}</a>\n\n"
         else:
          mux= f"<b>🍁 Muxed English Subtitles 🍁</b>"
+         m2 = f"<a href='https://telegra.ph/Muxed-English-Subtitles-12-29-9'>{mux}</a>\n\n"
     m3 = f"<a href='http://t.me/kdramaupdates'>Ongoing</a> | <a href='http://t.me/dramaindexchannel'>Index</a> | <a href='http://t.me/Korean_dramas_world'>Completed</a> | <a href='http://t.me/TeamDnO'>D&O</a>"
-
-    m2 = f"<a href='https://telegra.ph/Muxed-English-Subtitles-12-29-9'>{mux}</a>\n\n"
 
     base_file_name = os.path.basename(local_file_name)
     base_new_name = os.path.splitext(base_file_name)[0]
