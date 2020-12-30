@@ -64,6 +64,14 @@
       "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
       "value": "-1001219171544 -1001366455182"
     },
+    "name_ids": {
+      "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
+      "value": ""
+    },
+    "chan_ids": {
+      "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
+      "value": ""
+    },
     "user_ids2": {
       "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
       "value": "-1001165009913 -1001093214354"
