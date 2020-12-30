@@ -2,7 +2,7 @@ asyncio
 aiohttp
 hachoir
 Pillow
-Pyrogram
+Pyrogram==1.0.7
 TgCrypto
 requests
 beautifulsoup4
