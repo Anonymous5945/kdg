@@ -345,10 +345,10 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                     )
                     # quote=True,
                 )
-            elif local_file_name.lower().startswith(("@dramaost","[d&o]")):
+            elif base_file_name.lower().startswith(("@dramaost","[d&o]")):
                 for l , s in zip(name_ids,chan_ids):
                  h=l.lower()
-                 b=local_file_name.lower()
+                 b=base_file_name.lower()
                  if re.search(h,b):
                   m4=f"<b>Join: {s}</b>"
                   if local_file_name[:5] == "[D&O]":
