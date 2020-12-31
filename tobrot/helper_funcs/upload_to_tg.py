@@ -400,10 +400,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                  b=base_file_name.lower()
                  if re.search(h,b):
                   m4=f"<b>Join: {s}</b>"
-                  if base_file_name[:5] == "[D&O]":
-                    caption_str = f"<code>{base_new_name}{DO_CAPTION_1}</code>{DO_CAPTION_2}<code>{extension_new_name}</code>\n\n{m4}\n\n<b>{m2}{m3}</b>"
-                  else:
-                    caption_str = f"{base_new_name}{extension_new_name}\n\n{m4}\n\n<b>{m2}{m3}</b>"
+                  caption_str = re.sub(".mkv",f".mkv</code>\n\n{m4}", caption_str)
                   break
                 sent_message = await message.reply_document(
                     document=local_file_name,
