@@ -367,6 +367,8 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                 os.remove(thumb)
         else:
             base_file_name=os.path.basename(local_file_name)
+            base_new_name = os.path.splitext(base_file_name)[0]
+            extension_new_name = os.path.splitext(base_file_name)[1]
             thumb_image_path = None
             if os.path.isfile(thumbnail_location):
                 thumb_image_path = await copy_file(
