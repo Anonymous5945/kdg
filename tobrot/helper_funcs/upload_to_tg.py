@@ -175,7 +175,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
    if len(base_file_name) > 64 and base_file_name.lower().startswith(("@dramaost","[d&o]")):
      status_message = await message.reply_text("Renaming start")
      h=base_file_name
-     c=local_file_name
+     c_h=local_file_name
      out_dir = os.path.dirname(os.path.abspath(local_file_name))
      g=f"opus opus2.0 aac aac2.0 ddp5.1 ddp2.0 ddp2 h264 h.264 x264 10bit 2017 2018 2019 2020 2021 nf webdl web-dl webrip webhd web-hd web-rip".split(" ")
      c=0
@@ -212,7 +212,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
      out_file_name = os.path.join(out_dir, s)
      os.rename(local_file_name,out_file_name)
      local_file_name=out_file_name
-     await status_message.edit(f"Old Name - <code>{c}</code>\n\nNew Name - <code>{local_file_name}</code>")
+     await status_message.edit(f"Old Name - <code>{c_h}</code>\n\nNew Name - <code>{local_file_name}</code>")
    else:
     await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
     sent_message = None
