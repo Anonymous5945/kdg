@@ -174,6 +174,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
    
    if len(base_file_name) > 64 and base_file_name.lower().startswith(("@dramaost","[d&o]")):
      status_message = await message.reply_text("Renaming start")
+     base_file_name=os.path.basename(local_file_name)
      h=base_file_name
      c=local_file_name
      out_dir = os.path.dirname(os.path.abspath(local_file_name))
