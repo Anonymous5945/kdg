@@ -366,6 +366,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
             if thumb is not None:
                 os.remove(thumb)
         else:
+            base_file_name=os.path.basename(local_file_name)
             thumb_image_path = None
             if os.path.isfile(thumbnail_location):
                 thumb_image_path = await copy_file(
@@ -395,29 +396,12 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                  b=base_file_name.lower()
                  if re.search(h,b):
                   m4=f"<b>Join: {s}</b>"
-                  if local_file_name[:5] == "[D&O]":
-                    caption_str1 = f"<code>{base_new_name}{DO_CAPTION_1}</code>{DO_CAPTION_2}<code>{extension_new_name}</code>\n\n{m4}\n\n<b>{m2}{m3}</b>"
+                  if base_file_name[:5] == "[D&O]":
+                    caption_str = f"<code>{base_new_name}{DO_CAPTION_1}</code>{DO_CAPTION_2}<code>{extension_new_name}</code>\n\n{m4}\n\n<b>{m2}{m3}</b>"
                   else:
-                    caption_str1 = f"{base_new_name}{extension_new_name}\n\n{m4}\n\n<b>{m2}{m3}</b>"
-                  sent_message = await message.reply_document(
-                    document=local_file_name,
-                    # quote=True,
-                    thumb=thumb,
-                    caption=caption_str1,
-                    parse_mode="html",
-                    disable_notification=True,
-                    # reply_to_message_id=message.reply_to_message.message_id,
-                    progress=progress_for_pyrogram,
-                    progress_args=(
-                        "trying to upload",
-                        message_for_progress_display,
-                        start_time
-                    )
-                    
-                  )
-                  
-                 else:
-                  sent_message = await message.reply_document(
+                    caption_str = f"{base_new_name}{extension_new_name}\n\n{m4}\n\n<b>{m2}{m3}</b>"
+                  break
+                sent_message = await message.reply_document(
                     document=local_file_name,
                     # quote=True,
                     thumb=thumb,
@@ -432,7 +416,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                         start_time
                     )
                     
-                  )
+                )
                   
             else:
                   sent_message = await message.reply_document(
