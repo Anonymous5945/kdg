@@ -213,6 +213,8 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
      os.rename(local_file_name,out_file_name)
      local_file_name=out_file_name
      await status_message.edit(f"Old Name - <code>{c_h}</code>\n\nNew Name - <code>{local_file_name}</code>")
+   elif not base_file_name.lower().startswith(("kdg")) and re.search('_',base_file_name.lower()):
+    await message.reply_text("file name contain underscore please rename it")
    else:
     await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
     sent_message = None
