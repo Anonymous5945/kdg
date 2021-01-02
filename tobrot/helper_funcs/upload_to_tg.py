@@ -96,8 +96,8 @@ async def upload_to_tg(
     b = base_new_name
     if b[:5] == "[D&O]":
       caption_str = f"<code>{base_new_name}{DO_CAPTION_1}</code>{DO_CAPTION_2}<code>{extension_new_name}</code>\n\n<b>{m2}{m3}</b>"
-    elif b[:10].lower() == "@dnomovies":
-      caption_str = f"<code>{base_new_name}{DO_CAPTION_1}</code>{DO_CAPTION_2}<code>{extension_new_name}</code>\n\n<b>{m2}</b>"
+    elif b[:5].lower() == "[dno]":
+      caption_str = f"<code>{base_new_name}{DO_CAPTION_1}</code>@DnOMovies TG Group<code>{extension_new_name}</code>\n\n<b>{m2}</b>"
     elif local_file_name.upper().endswith(("MP3", "M4A", "M4B", "FLAC", "WAV", "RAR", "7Z", "ZIP")):
       caption_str = f"<code>{base_new_name}{extension_new_name}</code>\n\n<b>{m3}</b>"
     
@@ -448,3 +448,4 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
             await message_for_progress_display.delete()
     os.remove(local_file_name)
     return sent_message
+
