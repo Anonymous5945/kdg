@@ -48,10 +48,10 @@ async def kdg1_f(client, message):
        )
        await asyncio.sleep(3)
       if m.media and m.document and m.document.file_name.lower().endswith(".mp4"):
-        await client.send_document(user,m.document.file_id, caption= "<b>" + m.document.file_name + "</b>" + "\n\n" +"<b>@kdg_166  @korea_drama @kdg166_ongoing @kdgfiles</b>")
+        await client.send_document(user,m.document.file_id, caption= "<b>" + m.document.file_name + "</b>" + "\n\n" +"<b>@kdg_166 @korea_drama\n@kdg166_ongoing @kdgfiles</b>")
         await asyncio.sleep(3)
       if m.media and m.document and m.document.file_name.lower().endswith(".mkv"):
-        await client.send_document(user,m.document.file_id, caption= "<b>" + m.document.file_name + "</b>" + "\n\n" +"<b>@kdg_166  @korea_drama @kdg166_ongoing @kdgfiles\n\n</b>" +"<b>Muxed English Subtitle\nPlay it via external player</b>")
+        await client.send_document(user,m.document.file_id, caption= "<b>" + m.document.file_name + "</b>" + "\n\n" +"<b>@kdg_166 @korea_drama\n@kdg166_ongoing @kdgfiles\n\n</b>" +"<b>Muxed English Subtitle\nPlay it via external player</b>")
         await asyncio.sleep(3)
     await status_message.edit("finish")
 
@@ -74,9 +74,9 @@ async def kdg2_f(client, message):
        )
        await asyncio.sleep(3)
       if m.media and m.document and m.document.file_name.lower().endswith(".mp4"):
-        await client.send_document(user,m.document.file_id, caption= "<b>" + m.document.file_name + "</b>" + "\n\n" +"<b>@kdg_166  @korea_drama @kdg166_ongoing @kdgfiles</b>")
+        await client.send_document(user,m.document.file_id, caption= "<b>" + m.document.file_name + "</b>" + "\n\n" +"<b>@kdg_166 @korea_drama\n@kdg166_ongoing @kdgfiles</b>")
         await asyncio.sleep(3)
       if m.media and m.document and m.document.file_name.lower().endswith(".mkv"):
-        await client.send_document(user,m.document.file_id, caption= "<b>" + m.document.file_name + "</b>" + "\n\n" +"<b>@kdg_166  @korea_drama @kdg166_ongoing @kdgfiles\n\n</b>" +"<b>Muxed English Subtitle\nPlay it via external player</b>")
+        await client.send_document(user,m.document.file_id, caption= "<b>" + m.document.file_name + "</b>" + "\n\n" +"<b>@kdg_166 @korea_drama\n@kdg166_ongoing @kdgfiles\n\n</b>" +"<b>Muxed English Subtitle\nPlay it via external player</b>")
         await asyncio.sleep(3)
     await status_message.edit("finish")
