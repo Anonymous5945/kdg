@@ -3,9 +3,6 @@ import os
 import shutil
 import time
 from pyrogram import filters
-from pyrogram.types import (
-    Message
-)
 from tobrot import (
     LOGGER,
     AUTH_USERS,
@@ -13,15 +10,14 @@ from tobrot import (
     TG_MAX_FILE_SIZE,
     DOWNLOAD_LOCATION
 )
-from bot.bot import Bot
 from tobrot.helper_funcs.link_fliter import _link_match_filt_er
 from tobrot.helper_funcs.display_progress import (
     humanbytes,
     progress_for_pyrogram
 )
 from tobrot.helper_funcs.run_shell_command import run_command
-from bot.helpers.uptobox.get_file_info import upto_box_get_file_info
-from bot.helpers.uptobox.get_leech_file_link import (
+from tobrot.helper_funcs.uptobox.get_file_info import upto_box_get_file_info
+from tobrot.helper_funcs.uptobox.get_leech_file_link import (
     upto_box_get_file_link
 )
 
