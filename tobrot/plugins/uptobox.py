@@ -11,7 +11,7 @@ from bot import (
     AUTH_USERS,
     UPTO_BOX_TOKEN,
     TG_MAX_FILE_SIZE,
-    DOWN_LOAD_LOCATION
+    DOWNLOAD_LOCATION
 )
 from bot.bot import Bot
 from bot.helpers.link_fliter import _link_match_filt_er
@@ -25,18 +25,13 @@ from bot.helpers.uptobox.get_leech_file_link import (
     upto_box_get_file_link
 )
 
-
-@Bot.on_message(
-    filters.chat(AUTH_USERS) &
-    _link_match_filt_er("uptobox.com")
-)
-async def leech_upto_box_fn(client: Bot, message: Message):
+async def leech_upto_box_fn(client,message):
     status_message = await message.reply_text(
-        "...",
+        "Processing...",
         quote=True
     )
     download_location = os.path.join(
-        DOWN_LOAD_LOCATION,
+        DOWNLOAD_LOCATION,
         str(status_message.message_id)
     )
     if not os.path.isdir(download_location):
