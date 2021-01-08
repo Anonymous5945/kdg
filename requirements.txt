@@ -1,9 +1,9 @@
-asyncio
-aiohttp
+asyncio==3.4.3
+aiohttp==3.6.2
 hachoir
 Pillow
 Pyrogram==1.0.7
-TgCrypto
+TgCrypto==1.2.1
 requests
 beautifulsoup4
 youtube-dl
