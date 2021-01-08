@@ -19,7 +19,7 @@ from tobrot.helper_funcs.display_progress import (
     humanbytes,
     progress_for_pyrogram
 )
-from bot.helpers.run_shell_command import run_command
+from tobrot.helper_funcs.run_shell_command import run_command
 from bot.helpers.uptobox.get_file_info import upto_box_get_file_info
 from bot.helpers.uptobox.get_leech_file_link import (
     upto_box_get_file_link
