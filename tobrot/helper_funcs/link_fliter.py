@@ -1,10 +1,8 @@
 from pyrogram import filters
-from pyrogram.types import Message
-from bot.bot import Bot
 
 
 def _link_match_filt_er(link_kw: str):
-    def func(flt, client: Bot, message: Message):
+    def func(flt, client, message):
         if message and message.text:
             if flt.wok in message.text:
                 leech_url = None
