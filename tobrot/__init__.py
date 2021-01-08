@@ -13,6 +13,7 @@ else:
 
 # TODO: is there a better way?
 TG_BOT_TOKEN = Config.TG_BOT_TOKEN
+UPTO_BOX_TOKEN = Config.UPTO_BOX_TOKEN
 APP_ID = Config.APP_ID
 API_HASH = Config.API_HASH
 AUTH_CHANNEL = Config.AUTH_CHANNEL
