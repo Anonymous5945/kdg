@@ -6,7 +6,7 @@ from pyrogram import filters
 from pyrogram.types import (
     Message
 )
-from bot import (
+from tobrot import (
     LOGGER,
     AUTH_USERS,
     UPTO_BOX_TOKEN,
@@ -15,7 +15,7 @@ from bot import (
 )
 from bot.bot import Bot
 from bot.helpers.link_fliter import _link_match_filt_er
-from bot.helpers.progress_hlpr import (
+from tobrot.helper_funcs.display_progress import (
     humanbytes,
     progress_for_pyrogram
 )
