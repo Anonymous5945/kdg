@@ -33,7 +33,7 @@
       "value": ""
     },
     "UPTO_BOX_TOKEN": {
-      "description": "get this value from @BotFather",
+      "description": "get uptobox token",
       "value": "",
       "required": false
     },
