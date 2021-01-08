@@ -50,7 +50,7 @@ from pyrogram.handlers import (
     MessageHandler,
     CallbackQueryHandler
 )
-
+from tobrot.plugins.uptobox import leech_upto_box_fn
 from tobrot.plugins.ffmown import multi_f, arch_f
 from tobrot.plugins.myown import mux_f, domux_f, remux_f, muxget_f, muxyou_f, gdfile_f, vid_f
 from tobrot.plugins.new_join_fn import new_join_f, help_message_f
@@ -67,6 +67,8 @@ from tobrot.plugins.custom_thumbnail import (
 )
 from tobrot.plugins.forwardg import kdg1_f,kdg2_f
 from tobrot.helper_funcs.download import down_load_media_f, mass_down_load_media_f , scrap_seg_media_f, gp_f , wetv_f
+from tobrot.helper_funcs.link_fliter import _link_match_filt_er
+
 
 if __name__ == "__main__" :
     # create download directory, if not exist
@@ -219,4 +221,10 @@ if __name__ == "__main__" :
     )
     app.add_handler(clear_thumb_nail_handler)
     #
+    uptobox_handler = MessageHandler(
+        leech_upto_box_fn,
+        filters=filters.chat(AUTH_USERS) & _link_match_filt_er("uptobox.com")
+)
+    )
+    app.add_handler(uptobox_handler)
     app.run()
