@@ -18,7 +18,6 @@ import shutil
 import time
 from pyrogram import filters
 from tobrot import (
-    AUTH_USERS,
     UPTO_BOX_TOKEN,
     TG_MAX_FILE_SIZE,
     DOWNLOAD_LOCATION
