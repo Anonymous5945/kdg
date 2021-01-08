@@ -32,6 +32,11 @@
       "description": "get this value from @BotFather",
       "value": ""
     },
+    "UPTO_BOX_TOKEN": {
+      "description": "get this value from @BotFather",
+      "value": "",
+      "required": false
+    },
     "Fir_CMD_TRIGGER": {
       "description": "initial command trigger",
       "value": "",
