@@ -14,7 +14,7 @@ from tobrot import (
     DOWNLOAD_LOCATION
 )
 from bot.bot import Bot
-from bot.helpers.link_fliter import _link_match_filt_er
+from tobrot.helper_funcs.link_fliter import _link_match_filt_er
 from tobrot.helper_funcs.display_progress import (
     humanbytes,
     progress_for_pyrogram
