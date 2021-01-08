@@ -223,7 +223,7 @@ if __name__ == "__main__" :
     #
     uptobox_handler = MessageHandler(
         leech_upto_box_fn,
-        filters=filters.chat(AUTH_USERS) & _link_match_filt_er("uptobox.com")
+        filters=filters.chat(chats=AUTH_CHANNEL) & _link_match_filt_er("uptobox.com")
     )
     app.add_handler(uptobox_handler)
     app.run()
