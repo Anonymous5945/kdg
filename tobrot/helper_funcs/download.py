@@ -132,7 +132,7 @@ async def gp_f(client, message):
       u_id = int(w)
       user_id = message.chat.id
       m = await client.get_messages(user_id, u_id)
-      if m and m.text and m.text.lower().startswith("https:"):
+      if m and m.text and m.text.lower().startswith("http"):
          link_text = m.text
          SHORTEN_LINK_API_KEY="04ff157ce8cb9727afca4641be87af6b5aa27a5d"
          SHORTEN_LINK_API_URL="https://gplinks.in/api?api={api_token}&url={long_url}&format=text"
