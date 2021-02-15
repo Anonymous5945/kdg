@@ -50,7 +50,6 @@ from pyrogram.handlers import (
     MessageHandler,
     CallbackQueryHandler
 )
-from tobrot.plugins.downloader import link_fn
 from tobrot.plugins.uptobox import leech_upto_box_fn
 from tobrot.plugins.ffmown import multi_f, arch_f
 from tobrot.plugins.myown import mux_f, domux_f, remux_f, muxget_f, muxyou_f, gdfile_f, vid_f
@@ -228,9 +227,4 @@ if __name__ == "__main__" :
     )
     app.add_handler(uptobox_handler)
     #
-    link_handler = MessageHandler(
-        link_fn,
-        filters=filters.chat(chats=AUTH_CHANNEL) & _link_match_filt_er("http")
-    )
-    app.add_handler(link_handler)
     app.run()
