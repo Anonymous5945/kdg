@@ -32,33 +32,9 @@
       "description": "get this value from @BotFather",
       "value": ""
     },
-    "UPTO_BOX_TOKEN": {
-      "description": "get uptobox token",
-      "value": "",
-      "required": false
-    },
     "Fir_CMD_TRIGGER": {
       "description": "initial command trigger",
       "value": "",
-      "required": false
-    },
-    "TG_OFFENSIVE_API": {
-      "description": "should be an URL accepting the FormParams {i}, {m}, and {t}",
-      "required": false
-    },
-    "DO_CAPTION_1": {
-      "description": ".Enc'd.&.Upl'd.By.Team.D&O-",
-      "value": ".Enc'd.&.Upl'd.By.Team.D&O-",
-      "required": false
-    },
-    "DO_CAPTION_2": {
-      "description": "@dramaOST",
-      "value": "@dramaOST",
-      "required": false
-    },
-    "DO_CAPTION_3": {
-      "description": "Muxed English Subtitle",
-      "value": "Muxed English Subtitle",
       "required": false
     },
     "AUTH_CHANNEL": {
@@ -68,14 +44,6 @@
     "user_ids1": {
       "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
       "value": "-1001219171544 -1001366455182"
-    },
-    "name_ids": {
-      "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
-      "value": ""
-    },
-    "chan_ids": {
-      "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
-      "value": ""
     },
     "user_ids2": {
       "description": "should be an integer. The BOT API ID of the Telegram Group, where the Leecher should work.",
@@ -102,10 +70,6 @@
     "url": "https://github.com/Team-DnO/heroku-buildpack-p7zip"
   }, {
     "url": "https://github.com/Team-DnO/rclone-heroku"
-  }, {
-    "url": "https://github.com/rking32/heroku-buildpack-google-chrome"
-  }, {
-    "url": "https://github.com/rking32/heroku-buildpack-chromedriver"
   }, {
     "url": "heroku/python"
   }],
