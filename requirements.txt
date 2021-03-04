@@ -5,6 +5,5 @@ Pillow
 Pyrogram==1.0.7
 TgCrypto==1.2.1
 requests
-beautifulsoup4
 youtube-dl
 telegraph
