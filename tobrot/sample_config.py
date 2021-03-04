@@ -11,8 +11,6 @@ class Config(object):
     # to store the channel ID who are authorized to use the bot
     user_ids1 = set(int(x) for x in os.environ.get("user_ids1", "").split())
     user_ids2 = set(int(x) for x in os.environ.get("user_ids2", "").split())
-    name_ids = os.environ.get("name_ids", "").split()
-    chan_ids = os.environ.get("chan_ids", "").split()
     AUTH_CHANNEL = set(int(x) for x in os.environ.get("AUTH_CHANNEL", "").split())
     # the download location, where the HTTP Server runs
     DOWNLOAD_LOCATION = "./DOWNLOADS"
@@ -43,23 +41,13 @@ class Config(object):
     Save_Thumb_CMD_TRIGGER = os.environ.get("Save_Thumb_CMD_TRIGGER", "save")
     # clear thumbnail command
     Clear_thumb_CMD_TRIGGER = os.environ.get("Clear_thumb_CMD_TRIGGER", "clear")
-    DO_CAPTION_1 = os.environ.get("DO_CAPTION_1", "")
-    DO_CAPTION_2 = os.environ.get("DO_CAPTION_2", "")
-    DO_CAPTION_3 = os.environ.get("DO_CAPTION_3", "")
     TELEGRAM_CMD_TRIGGER = os.environ.get("TELEGRAM_CMD_TRIGGER", "down")
     # add offensive API
     TG_OFFENSIVE_API = os.environ.get("TG_OFFENSIVE_API", None)
     Mass_CMD_TRIGGER = os.environ.get("Mass_CMD_TRIGGER", "mass")
-    Scrapx_CMD_TRIGGER = os.environ.get("Scrapx_CMD_TRIGGER", "scrap")
     kdg1_CMD_TRIGGER = os.environ.get("kdg1_CMD_TRIGGER", "kdg1")
     kdg2_CMD_TRIGGER = os.environ.get("kdg2_CMD_TRIGGER", "kdg2")
-    Remux_CMD_TRIGGER = os.environ.get("Remux_CMD_TRIGGER", "remux")
-    Multi_CMD_TRIGGER = os.environ.get("Multi_CMD_TRIGGER", "ml")
-    Arch_CMD_TRIGGER = os.environ.get("Arch_CMD_TRIGGER", "arc")
     Youmux_CMD_TRIGGER = os.environ.get("Youmux_CMD_TRIGGER", "you")
     Getmux_CMD_TRIGGER = os.environ.get("Getmux_CMD_TRIGGER", "get")
     Gd_CMD_TRIGGER = os.environ.get("Gd_CMD_TRIGGER", "gd")
-    Gpd_CMD_TRIGGER = os.environ.get("Gpd_CMD_TRIGGER", "gp")
-    Wetv_CMD_TRIGGER = os.environ.get("Wetv_CMD_TRIGGER", "we")
-    Vid_CMD_TRIGGER = os.environ.get("Vid_CMD_TRIGGER", "vid")
     Fir_CMD_TRIGGER = os.environ.get("Fir_CMD_TRIGGER", "")
