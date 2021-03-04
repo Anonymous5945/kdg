@@ -36,12 +36,7 @@ from tobrot.helper_funcs.copy_similar_file import copy_file
 from tobrot import (
     TG_MAX_FILE_SIZE,
     EDIT_SLEEP_TIME_OUT,
-    DOWNLOAD_LOCATION,
-    DO_CAPTION_1,
-    DO_CAPTION_2,
-    DO_CAPTION_3,
-    chan_ids,
-    name_ids
+    DOWNLOAD_LOCATION
 )
 
 
@@ -55,58 +50,18 @@ async def upload_to_tg(
 ):
    
     LOGGER.info(local_file_name)
-    m2=''
-    if local_file_name.upper().endswith(("MKV","MP4")):
-     input_file=local_file_name
-     cmnd = f"ffprobe -loglevel error -select_streams s -show_entries stream_tags=title -of csv=p=0 {input_file}".split(" ")
-     p = subprocess.Popen(cmnd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-     out, err =  p.communicate()
-     p=out.decode("utf-8")
-     cmnd = f"ffprobe -loglevel error -select_streams s -show_entries stream_tags=language -of csv=p=0 {input_file}".split(" ")
-     p1 = subprocess.Popen(cmnd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-     out1, err1 =  p1.communicate()
-     q=out1.decode("utf-8")
-     p2=p.split('\n')
-     q2=q.split('\n')
-     p2=[x for x in p2 if x]
-     q2=[x for x in q2 if x]
-     n1=len(p2)
-     n2=len(q2)
-     if n1 == n2 and n1 > 0:
-      i=" , ".join(j  for j in p2)
-      mux=f"<b>{i}</b>"
-      m2 = f"<b>Muxed Subtitles : </b><a href='https://telegra.ph/Muxed-English-Subtitles-12-29-9'>{mux}</a>\n\n"
-     else:
-        stop=["und"]
-        i = [s.lower() for s in q.split() if s.lower() not in stop]
-        n3=len(i)
-        if n3 > 0:
-         mux= f"<b>{i}</b>"
-         m2 = f"<b>Muxed Subtitles : </b><a href='https://telegra.ph/Muxed-English-Subtitles-12-29-9'>{mux}</a>\n\n"
-        else:
-         mux= f"<b>🍁 Muxed English Subtitles 🍁</b>"
-         m2 = f"<a href='https://telegra.ph/Muxed-English-Subtitles-12-29-9'>{mux}</a>\n\n"
-    m3 = f"<a href='http://t.me/kdramaupdates'>Ongoing</a> | <a href='http://t.me/dramaindexchannel'>Index</a> | <a href='http://t.me/Korean_dramas_world'>Completed</a> | <a href='http://t.me/TeamDnO'>D&O</a>"
-
     base_file_name = os.path.basename(local_file_name)
     base_new_name = os.path.splitext(base_file_name)[0]
     extension_new_name = os.path.splitext(base_file_name)[1]
     b = base_new_name
-    if b[:5] == "[D&O]":
-      caption_str = f"<code>{base_new_name}{DO_CAPTION_1}</code>{DO_CAPTION_2}<code>{extension_new_name}</code>\n\n<b>{m2}{m3}</b>"
-    elif b[:5].lower() == "[dno]":
-      caption_str = f"<code>{base_new_name}{DO_CAPTION_1}</code>@DnOMovies TG Group<code>{extension_new_name}</code>\n\n<b>{m2}</b>"
-    elif local_file_name.upper().endswith(("MP3", "M4A", "M4B", "FLAC", "WAV", "RAR", "7Z", "ZIP")):
+    if local_file_name.upper().endswith(("MP3", "M4A", "M4B", "FLAC", "WAV", "RAR", "7Z", "ZIP")):
       caption_str = f"<code>{base_new_name}{extension_new_name}</code>\n\n<b>{m3}</b>"
-    
     elif b[:3] == "KDG" and local_file_name.lower().endswith(".mp4"):
       caption_str = f"<b>{base_new_name}{extension_new_name}\n\n@kdg_166 @korea_drama\n@kdgfiles</b>"
     elif b[:3] == "KDG" and local_file_name.lower().endswith(".mkv"):
       caption_str = f"<b>{base_new_name}{extension_new_name}\n\n@kdg_166 @korea_drama\n@kdgfiles\n\nMuxed English Subtitles\nPlay it via external player</b>"
     else:
-      caption_str = f"{base_new_name}{extension_new_name}\n\n<b>{m2}{m3}</b>"
+      caption_str = f"{base_new_name}{extension_new_name}"
     if os.path.isdir(local_file_name):
         directory_contents = os.listdir(local_file_name)
         directory_contents.sort()
@@ -172,52 +127,6 @@ async def upload_to_tg(
 
 
 async def upload_single_file(message, local_file_name, caption_str, from_user, edit_media):
-   
-   base_file_name=os.path.basename(local_file_name)
-   if len(base_file_name) > 64 and base_file_name.lower().startswith(("@dramaost","[d&o]")):
-     status_message = await message.reply_text("Renaming start")
-     h=base_file_name
-     c_h=local_file_name
-     out_dir = os.path.dirname(os.path.abspath(local_file_name))
-     g=f"opus opus2.0 aac aac2.0 ddp5.1 ddp2.0 ddp2 h264 h.264 x264 10bit 2017 2018 2019 2020 2021 nf webdl web-dl webrip webhd web-hd web-rip".split(" ")
-     c=0
-     f=h.lower()
-     f = re.sub("_", '.', f)
-     f = re.sub("web.dl", 'webdl', f)
-     if f[:3] == "d&o" :
-       f = re.sub("d&o", '[d&o]', f)
-     for i in g :
-       if len(f) <= 64:
-            break
-       if re.search(i,f):
-         f = re.sub("."+i, '', f)
-     if len(f)>64:
-       f = re.sub("@dramaost.", '', f)
-     p=f.split('.')
-     s= '.'.join(i.capitalize() for i in p)
-     s = re.sub("Nf", 'NF', s)
-     s = re.sub("Web-dl", 'WEB-DL', s)
-     s = re.sub("Webdl", 'WEB-DL', s)
-     s = re.sub("Webrip", 'WEBRip', s)
-     s = re.sub("Sh3lby", 'SH3LBY', s)
-     s = re.sub("sh3lby", 'SH3LBY', s)
-     s = re.sub("ost", 'OST', s)
-     s = re.sub("Mkv", 'mkv', s)
-     s = re.sub("d&o", 'D&O', s)
-     s = re.sub("D&o", 'D&O', s)
-     s = re.sub("S01e", 'S01E', s)
-     s = re.sub("S02e", 'S02E', s)
-     s = re.sub("S03e", 'S03E', s)
-     s = re.sub("S04e", 'S04E', s)
-     s = re.sub("X265", 'x265', s)
-     s = re.sub("X264", 'x264', s)
-     out_file_name = os.path.join(out_dir, s)
-     os.rename(local_file_name,out_file_name)
-     local_file_name=out_file_name
-     await status_message.edit(f"Old Name - <code>{c_h}</code>\n\nNew Name - <code>{local_file_name}</code>")
-   elif not base_file_name.lower().startswith(("kdg")) and re.search('_',base_file_name.lower()):
-    await message.reply_text(f"<code>{local_file_name}</code>\n\nfile name contain underscore please rename it")
-   else:
     await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
     sent_message = None
     start_time = time.time()
@@ -396,31 +305,6 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                     )
                     # quote=True,
                 )
-            elif base_file_name.lower().startswith(("@dramaost","[d&o]")):
-                for l , s in zip(name_ids,chan_ids):
-                 h=l.lower()
-                 b=base_file_name.lower()
-                 if re.search(h,b):
-                  m4=f"<b>Join: {s}</b>"
-                  caption_str = re.sub(".mkv",f".mkv</code>\n\n{m4}", caption_str)
-                  break
-                sent_message = await message.reply_document(
-                    document=local_file_name,
-                    # quote=True,
-                    thumb=thumb,
-                    caption=caption_str,
-                    parse_mode="html",
-                    disable_notification=True,
-                    # reply_to_message_id=message.reply_to_message.message_id,
-                    progress=progress_for_pyrogram,
-                    progress_args=(
-                        "trying to upload",
-                        message_for_progress_display,
-                        start_time
-                    )
-                    
-                )
-                  
             else:
                   sent_message = await message.reply_document(
                     document=local_file_name,
