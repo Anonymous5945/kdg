@@ -20,10 +20,7 @@ import sys
 import traceback
 import aiohttp
 import json
-import urllib.parse
-import urllib.parse
 import shlex
-import requests
 from telegraph import Telegraph
 from pyrogram.types import (
     InlineKeyboardButton,
@@ -33,9 +30,6 @@ from pyrogram.types import (
 
 from datetime import datetime
 from pyrogram import Client, filters
-
-from bs4 import BeautifulSoup
-import urllib3
 
 from tobrot import (
     MAX_MESSAGE_LENGTH,
