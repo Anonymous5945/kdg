@@ -158,30 +158,7 @@ async def upload_single_file(message, local_file_name, caption_str, from_user, e
                     os.path.dirname(os.path.abspath(local_file_name))
                 )
             else:
-                thumb_image_path = await take_screen_shot(
-                    local_file_name,
-                    os.path.dirname(os.path.abspath(local_file_name)),
-                    (duration / 2)
-                )
-                # get the correct width, height, and duration for videos greater than 10MB
-                if os.path.exists(thumb_image_path):
-                    metadata = extractMetadata(createParser(thumb_image_path))
-                    if metadata.has("width"):
-                        width = metadata.get("width")
-                    if metadata.has("height"):
-                        height = metadata.get("height")
-                    # resize image
-                    # ref: https://t.me/PyrogramChat/44663
-                    # https://stackoverflow.com/a/21669827/4723940
-                    Image.open(thumb_image_path).convert(
-                        "RGB"
-                    ).save(thumb_image_path)
-                    img = Image.open(thumb_image_path)
-                    # https://stackoverflow.com/a/37631799/4723940
-                    img.resize((320, height))
-                    img.save(thumb_image_path, "JPEG")
-                    # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#create-thumbnails
-            #
+                thumb_image_path = None
             thumb = None
             if thumb_image_path is not None and os.path.isfile(thumb_image_path):
                 thumb = thumb_image_path
