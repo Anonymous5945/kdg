@@ -21,19 +21,11 @@ from tobrot import (
     API_HASH,
     AUTH_CHANNEL,
     EXEC_CMD_TRIGGER,
-    Ytdl_CMD_TRIGGER,
     Eval_CMD_TRIGGER,
     Upload_CMD_TRIGGER,
     Save_Thumb_CMD_TRIGGER,
     Clear_thumb_CMD_TRIGGER,
-    TELEGRAM_CMD_TRIGGER,
-    Mass_CMD_TRIGGER,
-    Youmux_CMD_TRIGGER,
-    Getmux_CMD_TRIGGER,
-    Gd_CMD_TRIGGER,
-    Gpd_CMD_TRIGGER,
-    kdg1_CMD_TRIGGER,
-    kdg2_CMD_TRIGGER
+    TELEGRAM_CMD_TRIGGER
 )
 
 from pyrogram import (
@@ -44,21 +36,17 @@ from pyrogram.handlers import (
     MessageHandler,
     CallbackQueryHandler
 )
-from tobrot.plugins.myown import muxget_f, muxyou_f, gdfile_f
 from tobrot.plugins.new_join_fn import new_join_f, help_message_f
-from tobrot.plugins.incoming_message_fn import incoming_youtube_dl_f
 from tobrot.plugins.status_message_fn import (
     exec_message_f,
     eval_message_f,
     upload_document_f
 )
-from tobrot.plugins.call_back_button_handler import button
 from tobrot.plugins.custom_thumbnail import (
     save_thumb_nail,
     clear_thumb_nail
 )
-from tobrot.plugins.forwardg import kdg1_f,kdg2_f
-from tobrot.helper_funcs.download import down_load_media_f, mass_down_load_media_f
+from tobrot.helper_funcs.download import down_load_media_f
 
 
 if __name__ == "__main__" :
@@ -74,54 +62,13 @@ if __name__ == "__main__" :
         workers=343,
         workdir=DOWNLOAD_LOCATION
     )
-    #
-    incoming_youtube_dl_handler = MessageHandler(
-        incoming_youtube_dl_f,
-        filters=filters.command([Ytdl_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
-    )
-    app.add_handler(incoming_youtube_dl_handler)
-    #
-    incoming_mass_download_handler = MessageHandler(
-        mass_down_load_media_f,
-        filters=filters.command([Mass_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
-    )
-    app.add_handler(incoming_mass_download_handler)
+    
     #
     incoming_telegram_download_handler = MessageHandler(
         down_load_media_f,
         filters=filters.command([TELEGRAM_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
     )
     app.add_handler(incoming_telegram_download_handler)
-    #
-    incoming_kdg1_handler = MessageHandler(
-        kdg1_f,
-        filters=filters.command([kdg1_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
-    )
-    app.add_handler(incoming_kdg1_handler)
-    #
-    incoming_kdg2_handler = MessageHandler(
-        kdg2_f,
-        filters=filters.command([kdg2_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
-    )
-    app.add_handler(incoming_kdg2_handler)
-    #
-    incoming_muxyou_handler = MessageHandler(
-        muxyou_f,
-        filters=filters.command([Youmux_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
-    )
-    app.add_handler(incoming_muxyou_handler)
-    #
-    incoming_muxget_handler = MessageHandler(
-        muxget_f,
-        filters=filters.command([Getmux_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
-    )
-    app.add_handler(incoming_muxget_handler)
-    #
-    incoming_gd_handler = MessageHandler(
-        gdfile_f,
-        filters=filters.command([Gd_CMD_TRIGGER]) & filters.chat(chats=AUTH_CHANNEL)
-    )
-    app.add_handler(incoming_gd_handler)
     #
     exec_message_handler = MessageHandler(
         exec_message_f,
@@ -152,11 +99,6 @@ if __name__ == "__main__" :
         filters=~filters.chat(chats=AUTH_CHANNEL)
     )
     app.add_handler(new_join_handler)
-    #
-    call_back_button_handler = CallbackQueryHandler(
-        button
-    )
-    app.add_handler(call_back_button_handler)
     #
     save_thumb_nail_handler = MessageHandler(
         save_thumb_nail,
