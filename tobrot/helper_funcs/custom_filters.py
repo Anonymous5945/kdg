@@ -16,7 +16,7 @@ def message_filter_f(flt, c: Client, m: Message):
             (
                 # below checks the TORRENT detection part
                 m.text and
-                m.text.lower().startswith("http") and ("uptobox.com" not in m.text) and (".html" not in m.text)
+                m.text.lower().startswith("http") and ("mdl.com" not in m.text) and (".html" not in m.text)
             ) 
         )
 
