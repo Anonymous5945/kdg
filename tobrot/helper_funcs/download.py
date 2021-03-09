@@ -20,7 +20,6 @@ import sys
 import traceback
 import aiohttp
 import json
-import shlex
 from telegraph import Telegraph
 from pyrogram.types import (
     InlineKeyboardButton,
@@ -84,37 +83,3 @@ async def down_load_media_f(client, message):
     else:
         #await asyncio.sleep(4)
         await mess_age.edit_text("Reply to a Telegram Media, to save to the server.")
-
-
-async def mass_down_load_media_f(client, message):
-    user_id = message.from_user.id
-    print(user_id)
-    mess_age = await message.reply_text("processing...", quote=True)
-    if not os.path.isdir(DOWNLOAD_LOCATION):
-        os.makedirs(DOWNLOAD_LOCATION)    
-    n=message.message_id
-    w=message.reply_to_message.message_id
-    tar_id = message.chat.id
-    start_t = datetime.now()
-    if message.reply_to_message is not None:
-      try:
-        u_out = message.text.split(" ")[1]
-        new_name = os.path.basename(u_out)
-        output_directory = os.path.dirname(os.path.abspath(new_name))
-        f = os.path.join(output_directory, new_name) + "/"
-        for i in range(w, n):
-          u_id = int(i)
-          m = await client.get_messages(tar_id, u_id)
-          if m.media:
-             await m.download(f)
-             await asyncio.sleep(10)
-        end_t = datetime.now()
-        ms = (end_t - start_t).seconds
-        await mess_age.edit_text(f"<b>OUTPUT:</b>\n\n <code>{f}</code> \n\ncompleted in <u>{ms}</u> seconds")
-      except IndexError:
-        pass
-        await mess_age.edit("please type output folder name with run command")
-    else:
-        #await asyncio.sleep(4)
-        await mess_age.edit_text("Reply to a Telegram Media, to save to the server.")
-
