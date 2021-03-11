@@ -50,8 +50,6 @@
   "buildpacks": [{
     "url": "https://github.com/Team-DnO/heroku-buildpack-ffmpeg-latest"
   }, {
-    "url": "https://github.com/Team-DnO/heroku-buildpack-rarlab"
-  }, {
     "url": "heroku/python"
   }],
   "formation": {
