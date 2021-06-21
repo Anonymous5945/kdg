@@ -5,29 +5,6 @@
 
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Anonymous5945/kdg)
 
-### The Legacy Way
-Simply clone the repository and run the main file:
-
-```sh
-git clone https://github.com/SpEcHiDe/PublicLeech.git
-cd PublicLeech
-virtualenv -p /usr/bin/python3 venv
-. ./venv/bin/activate
-pip install -r requirements.txt
-# <Create config.py appropriately>
-python3 -m tobrot
-```
-
-### an example config.py 👇
-```py
-from tobrot.sample_config import Config
-
-class Config(Config):
-  TG_BOT_TOKEN = ""
-  APP_ID = 6
-  API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
-  AUTH_CHANNEL = -1001234567890
-```
 
 ### Variable Explanations
 
@@ -36,9 +13,7 @@ class Config(Config):
 * `TG_BOT_TOKEN`: Create a bot using [@BotFather](https://telegram.dog/BotFather), and get the Telegram API token.
 
 * `APP_ID`
-* `API_HASH`: Get these two values from [my.telegram.org/apps](https://my.telegram.org/apps).
-  * N.B.: if Telegram is blocked by your ISP, try our [Telegram bot](https://telegram.dog/UseTGXBot) to get the IDs.
-
+* `API_HASH`: 
 * `AUTH_CHANNEL`: Create a Super Group in Telegram, add `@GoogleIMGBot` to the group, and send /id in the chat, to get this value.
 
 ##### Optional Configuration Variables
