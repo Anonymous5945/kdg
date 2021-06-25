@@ -24,7 +24,7 @@ from tobrot import (
 )
 
 
-from tobrot.helper_funcs.admin_check import AdminCheck
+from tobrot.plugins.admin_check import AdminCheck
 
 
 async def exec_message_f(client, message):
