@@ -130,18 +130,4 @@ async def aexec(code, client, message):
     )
     return await locals()['__aexec'](client, message)
 
-async def upload_document_f(client, message):
-    imsegd = await message.reply_text(
-        "processing ..."
-    )
-    if await AdminCheck(client, message.chat.id, message.from_user.id):
-        if " " in message.text:
-            recvd_command, local_file_name = message.text.split(" ", 1)
-            recvd_response = await upload_to_tg(
-                imsegd,
-                local_file_name,
-                message.from_user.id,
-                {}
-            )
-            LOGGER.info(recvd_response)
-    await imsegd.delete()
+ 
