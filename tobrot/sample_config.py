@@ -13,8 +13,6 @@ class Config(object):
     EXEC_CMD_TRIGGER = os.environ.get("EXEC_CMD_TRIGGER", "exec")
     # maximum message length in Telegram
     MAX_MESSAGE_LENGTH = 4096
-    # set timeout for subprocess
-    PROCESS_MAX_TIMEOUT = 3600
     # Eval command
     Eval_CMD_TRIGGER = os.environ.get("Eval_CMD_TRIGGER", "eval")
     # savethumbnail command
