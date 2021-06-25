@@ -25,24 +25,9 @@
       "description": "get this value from @BotFather",
       "value": ""
     },
-    "Fir_CMD_TRIGGER": {
-      "description": "initial command trigger",
-      "value": "",
-      "required": false
-    },
     "AUTH_CHANNEL": {
       "description": "should be an integer.Auth channel",
       "value": "-1001486147767"
-    },
-    "CHUNK_SIZE": {
-      "description": "should be an integer",
-      "value": "128",
-      "required": false
-    },
-    "EDIT_SLEEP_TIME_OUT": {
-      "description": "should be an integer. Number of seconds to wait before editing a message.",
-      "value": "4",
-      "required": false
     }
   },
   "buildpacks": [{
