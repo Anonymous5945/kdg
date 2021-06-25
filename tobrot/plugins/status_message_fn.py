@@ -25,7 +25,6 @@ from tobrot import (
 
 
 from tobrot.helper_funcs.admin_check import AdminCheck
-from tobrot.helper_funcs.upload_to_tg import upload_to_tg
 
 
 async def exec_message_f(client, message):
