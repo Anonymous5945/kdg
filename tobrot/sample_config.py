@@ -15,7 +15,4 @@ class Config(object):
     MAX_MESSAGE_LENGTH = 4096
     # Eval command
     Eval_CMD_TRIGGER = os.environ.get("Eval_CMD_TRIGGER", "eval")
-    # savethumbnail command
-    Save_Thumb_CMD_TRIGGER = os.environ.get("Save_Thumb_CMD_TRIGGER", "save")
-    # clear thumbnail command
-    Clear_thumb_CMD_TRIGGER = os.environ.get("Clear_thumb_CMD_TRIGGER", "clear"
+   
