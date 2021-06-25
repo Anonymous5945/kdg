@@ -33,7 +33,7 @@ from pyrogram.handlers import (
     CallbackQueryHandler
 )
 
-from tobrot.plugins.status_message_fn import (
+from tobrot.status_message_fn import (
     exec_message_f,
     eval_message_f
 )
